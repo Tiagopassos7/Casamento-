@@ -609,4 +609,45 @@
         function alternarMusica() {
             if (som.paused) {
                 som.play();
-                ic
+                iconePlayer.className = "fa-solid fa-pause";
+            } else {
+                som.pause();
+                iconePlayer.className = "fa-solid fa-play";
+            }
+        }
+
+        // SCROLL REVEAL
+        const elementosAnimados = document.querySelectorAll('.animar-scroll');
+        function checarScroll() {
+            const gatilho = (window.innerHeight / 5) * 4;
+            elementosAnimados.forEach(el => {
+                if (el.getBoundingClientRect().top < gatilho) {
+                    el.classList.add('em-foco');
+                }
+            });
+        }
+        window.addEventListener('scroll', checarScroll);
+
+        // CONTADOR REGRESSIVO
+        const dataCasamento = new Date("Nov 22, 2026 16:00:00").getTime();
+        function atualizarContador() {
+            const distancia = dataCasamento - new Date().getTime();
+            
+            if (distancia < 0) {
+                document.getElementById("contador").innerHTML = "<div class='tempo-box' style='width:100%; font-size:1.4rem; font-family:Cormorant Garamond, serif;'>É HOJE!</div>";
+                return;
+            }
+
+            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("dias").innerText = dias < 10 ? "0" + dias : dias;
+            document.getElementById("horas").innerText = horas < 10 ? "0" + horas : horas;
+            document.getElementById("minutos").innerText = minutos < 10 ? "0" + minutos : minutos;
+        }
+        atualizarContador();
+        setInterval(atualizarContador, 1000);
+    </script>
+</body>
+</html>
