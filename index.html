@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casamento de Tiago & Ricaely</title>
     
-    <!-- Importação de Fontes Elegantes e Nobres -->
+    <!-- Fontes Elegantes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Montserrat:wght@100;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2 family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Montserrat:wght@100;300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Ícones (FontAwesome) -->
+    <!-- Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         :root {
-            --cor-fundo: #fbf9f6; /* Off-white estilo papel de convite */
+            --cor-fundo: #fbf9f6;
             --cor-card-bg: #ffffff;
-            --cor-marrom: #4A3525; /* Marrom escuro nobre */
+            --cor-marrom: #4A3525;
             --cor-preto: #1A1A1A;
             --cor-texto: #4A4A4A;
             --cor-borda: #DFD9CE;
@@ -38,7 +38,6 @@
             position: relative;
         }
 
-        /* MOLDURA CLÁSSICA NAS BORDAS DO SITE */
         body::before {
             content: "";
             position: fixed;
@@ -51,7 +50,7 @@
             z-index: 999;
         }
 
-        /* BRASÃO / LOGO DE LUXO CUSTOMIZADA */
+        /* BRASÃO CLÁSSICO */
         .brasao-casal {
             width: 110px;
             height: 110px;
@@ -63,7 +62,6 @@
             margin: 0 auto 30px auto;
             position: relative;
             background-color: transparent;
-            box-shadow: 0 4px 15px rgba(74, 53, 37, 0.05);
         }
 
         .brasao-casal::after {
@@ -83,96 +81,108 @@
             font-size: 2.2rem;
             color: var(--cor-marrom);
             letter-spacing: 1px;
-            font-weight: 400;
-            margin-left: 3px;
             z-index: 2;
         }
 
-        /* 1. TELA DO SELO DE ENTRADA */
+        /* ✉️ TELA DE ENTRADA: ENVELOPE DE LUXO INTERATIVO */
         #tela-selo {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: radial-gradient(circle, #262626 0%, var(--cor-preto) 100%);
+            background-color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            perspective: 1000px;
+            transition: opacity 1s ease, visibility 1s;
+        }
+
+        .envelope {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Abas do Envelope */
+        .aba-envelope {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            background-color: #1a1a1a;
+            border: 1px solid rgba(74, 53, 37, 0.2);
+            transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .aba-superior {
+            top: 0;
+            transform-origin: top;
+            align-items: flex-end;
+            background: linear-gradient(to bottom, #222, #1a1a1a);
+        }
+
+        .aba-inferior {
+            bottom: 0;
+            transform-origin: bottom;
+            align-items: flex-start;
+            background: linear-gradient(to top, #222, #1a1a1a);
+        }
+
+        /* O Lacre/Selo de Cera Virtual */
+        .selo-lacre {
+            position: absolute;
+            z-index: 5;
+            background: #4A3525;
+            border: 2px solid #5a4230;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
-            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.2s;
-        }
-
-        .selo-container {
-            border: 1px solid var(--cor-marrom);
-            padding: 60px 45px;
-            text-align: center;
-            background-color: rgba(26, 26, 26, 0.95);
-            box-shadow: 0 30px 70px rgba(0,0,0,0.8);
-            max-width: 90%;
-            width: 365px;
-            position: relative;
-        }
-
-        .selo-container::before {
-            content: "";
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            right: 8px;
-            bottom: 8px;
-            border: 1px solid rgba(74, 53, 37, 0.3);
-            pointer-events: none;
-        }
-
-        .selo-container .brasao-casal { border-color: #ffffff; }
-        .selo-container .brasao-casal::after { border-color: rgba(255, 255, 255, 0.4); }
-        .selo-container .brasao-texto { color: #ffffff; }
-
-        .selo-linha {
-            width: 60px;
-            height: 1px;
-            background-color: var(--cor-marrom);
-            margin: 20px auto;
-        }
-
-        .selo-data {
-            font-size: 0.8rem;
-            color: #cccccc;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 35px;
-            font-weight: 300;
-        }
-
-        .btn-entrar {
-            background: transparent;
-            color: #ffffff;
-            border: 1px solid rgba(255,255,255,0.7);
-            padding: 14px 35px;
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
             cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5), inset 0 0 10px rgba(0,0,0,0.5);
             transition: all 0.5s ease;
-            font-family: 'Montserrat', sans-serif;
+            top: calc(50% - 60px);
+            left: calc(50% - 60px);
         }
 
-        .btn-entrar:hover {
-            background-color: #ffffff;
-            color: var(--cor-preto);
-            border-color: #ffffff;
-            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        .selo-lacre:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 20px rgba(74, 53, 37, 0.6);
         }
 
-        .esconder-selo {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
+        .selo-lacre .texto-lacre {
+            font-family: 'Cormorant Garamond', serif;
+            color: #fbf9f6;
+            font-size: 1.8rem;
         }
 
-        /* 2. CONTEÚDO PRINCIPAL DO SITE */
+        .selo-lacre span {
+            font-size: 0.55rem;
+            color: #dfd9ce;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 2px;
+        }
+
+        /* Estado aberto do envelope */
+        .envelope.aberto .aba-superior { transform: rotateX(110deg); }
+        .envelope.aberto .aba-inferior { transform: rotateX(-110deg); }
+        .envelope.aberto .selo-lacre { opacity: 0; transform: scale(0); pointer-events: none; }
+
+        .esconder-selo { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        /* CONTENT */
         #conteudo-site {
             opacity: 0;
             transform: translateY(30px);
@@ -181,14 +191,9 @@
             margin: 0 auto;
         }
 
-        #conteudo-site.visivel {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        #conteudo-site.visivel { opacity: 1; transform: translateY(0); }
 
-        header {
-            padding: 100px 20px 40px 20px;
-        }
+        header { padding: 100px 20px 40px 20px; }
 
         h1 {
             font-family: 'Cormorant Garamond', serif;
@@ -206,6 +211,14 @@
             color: var(--cor-marrom);
             font-weight: 600;
             margin-bottom: 25px;
+        }
+
+        /* Detalhes de Plantas/Ramos como na foto de referência */
+        .detalhe-folhas-topo {
+            color: var(--cor-marrom);
+            opacity: 0.4;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
         }
 
         .divisor-floral {
@@ -295,7 +308,6 @@
             border: 1px solid var(--cor-borda);
             background-color: #fff;
             padding: 8px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.02);
         }
 
         .foto-item.grande {
@@ -349,32 +361,69 @@
             font-size: 0.9rem;
             line-height: 1.8;
             color: var(--cor-texto);
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             font-weight: 300;
         }
 
-        /* BOTÕES CIRCULARES MINIMALISTAS PREMIUM */
-        .btn-icone {
+        /* 🏷️ ELEMENTOS PREMIUM CURVADOS (ESTILO DA FOTO DE REFERÊNCIA) */
+        .botao-curvado-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--cor-preto);
-            color: #ffffff;
-            width: 75px;
-            height: 75px;
-            text-decoration: none;
-            font-size: 1.6rem;
-            border-radius: 50%;
-            transition: all 0.4s ease;
-            border: 1px solid var(--cor-preto);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            margin-top: 10px;
         }
 
-        .btn-icone:hover {
+        /* O botão redondo central */
+        .btn-circular-premium {
+            width: 75px;
+            height: 75px;
             background-color: transparent;
             color: var(--cor-marrom);
-            border-color: var(--cor-marrom);
-            transform: scale(1.08);
+            border: 1px solid var(--cor-marrom);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            z-index: 2;
+            box-shadow: 0 4px 12px rgba(74, 53, 37, 0.05);
+        }
+
+        .btn-circular-premium:hover {
+            background-color: var(--cor-marrom);
+            color: #ffffff;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(74, 53, 37, 0.2);
+        }
+
+        /* Texto curvado ao redor usando SVG */
+        .texto-curvado-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120px;
+            height: 120px;
+            pointer-events: none;
+            animation: girarLento 25s linear infinite;
+        }
+
+        .texto-curvado-svg text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            fill: var(--cor-marrom);
+            font-weight: 500;
+        }
+
+        @keyframes girarLento {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         /* Google Maps */
@@ -393,7 +442,7 @@
             border: 0;
         }
 
-        /* CLASSE DE ANIMAÇÃO AO ROLAR (SCROLL REVEAL VIA CSS) */
+        /* Animação Scroll */
         .animar-scroll {
             opacity: 0;
             transform: translateY(40px);
@@ -405,7 +454,7 @@
             transform: translateY(0);
         }
 
-        /* CONTROLE FLUTUANTE DA MÚSICA */
+        /* Player Flutuante */
         #controle-musica {
             position: fixed;
             bottom: 30px;
@@ -425,10 +474,7 @@
             font-size: 1rem;
             transition: all 0.3s ease;
         }
-        #controle-musica:hover {
-            transform: scale(1.1);
-            color: var(--cor-preto);
-        }
+        #controle-musica:hover { transform: scale(1.1); color: var(--cor-preto); }
 
         footer {
             margin-top: 100px;
@@ -444,29 +490,34 @@
 </head>
 <body>
 
-    <!-- PLAYER DE ÁUDIO OCULTO -->
     <audio id="musica-casamento" src="musica.mp3" loop></audio>
 
-    <!-- BOTÃO FLUTUANTE DE CONTROLE DA MÚSICA -->
     <div id="controle-musica" onclick="alternarMusica()">
         <i id="icone-player" class="fa-solid fa-music"></i>
     </div>
 
-    <!-- 1. TELA DO SELO DE ENTRADA -->
+    <!-- ✉️ TELA DO ENVELOPE / LACRE INICIAL -->
     <div id="tela-selo">
-        <div class="selo-container">
-            <div class="brasao-casal">
-                <div class="brasao-texto">T&R</div>
+        <div class="envelope" id="envelope-container">
+            <div class="aba-envelope aba-superior"></div>
+            
+            <!-- O Selo Redondo que abre o convite -->
+            <div class="selo-lacre" onclick="abrirEnvelope()">
+                <div class="selo-lacre-interno"></div>
+                <div class="texto-lacre">T&R</div>
+                <span>Abrir</span>
             </div>
-            <div class="selo-linha"></div>
-            <div class="selo-data">22 . 11 . 2026</div>
-            <button class="btn-entrar" onclick="liberarSite()">Entrar na Celebração</button>
+            
+            <div class="aba-envelope aba-inferior"></div>
         </div>
     </div>
 
     <!-- 2. CONTEÚDO PRINCIPAL DO SITE -->
     <div id="conteudo-site">
         <header>
+            <div class="detalhe-folhas-topo">
+                <i class="fa-solid fa-seedling"></i>
+            </div>
             <div class="brasao-casal">
                 <div class="brasao-texto">T&R</div>
             </div>
@@ -479,7 +530,7 @@
             </div>
             
             <p class="texto-introducao">
-                "O amor é paciente, o amor é bondoso. Para nós, a maior felicidade será testemunhar o início do nosso felizes para sempre ao lado das pessoas que mais amamos. Sejam bem-vindos ao nosso espaço dedicado a este grande dia."
+                "O amor é paciente, o amor é bondoso. Para nós, a maior felicidade será testemunhar o início do nosso felizes para sempre ao lado das pessoas que mais amamos."
             </p>
             
             <div class="titulo-contador">
@@ -492,40 +543,48 @@
             </div>
         </header>
 
-        <!-- GALERIA DE FOTOS (Com classe de animação) -->
         <div class="galeria-container animar-scroll">
-            <div class="foto-item grande">
-                <img src="casal1.jpg" alt="Tiago & Ricaely">
-            </div>
-            <div class="foto-item">
-                <img src="casal2.jpg" alt="Tiago & Ricaely">
-            </div>
-            <div class="foto-item">
-                <img src="casal3.jpg" alt="Tiago & Ricaely">
-            </div>
+            <div class="foto-item grande"><img src="casal1.jpg" alt="Casal"></div>
+            <div class="foto-item"><img src="casal2.jpg" alt="Casal"></div>
+            <div class="foto-item"><img src="casal3.jpg" alt="Casal"></div>
         </div>
 
         <div class="container">
 
-            <!-- Card 1: Presença (Com classe de animação) -->
+            <!-- Card 1: Presença com Ícone Curvado -->
             <div class="card animar-scroll">
                 <div>
                     <h3>Confirmação de Presença</h3>
                     <p>Para nos ajudar a planejar cada detalhe com carinho, por favor, confirme sua presença preenchendo o formulário até o dia 22/10/2026.</p>
                 </div>
-                <a href="https://forms.google.com" target="_blank" class="btn-icone"><i class="fa-solid fa-check"></i></a>
+                
+                <div class="botao-curvado-wrapper">
+                    <!-- Texto curvado dinâmico em formato circular -->
+                    <svg class="texto-curvado-svg" viewBox="0 0 100 100">
+                        <path id="curva-presenca" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"/>
+                        <text><textPath href="#curva-presenca" startOffset="50%" text-anchor="middle">• confirmar presença • confirmar presença</textPath></text>
+                    </svg>
+                    <a href="https://forms.google.com" target="_blank" class="btn-circular-premium"><i class="fa-solid fa-user-check"></i></a>
+                </div>
             </div>
 
-            <!-- Card 2: Presentes (Com classe de animação) -->
+            <!-- Card 2: Presentes com Ícone Curvado -->
             <div class="card animar-scroll">
                 <div>
                     <h3>Lista de Presentes</h3>
                     <p>Sua companhia é o nosso maior presente! Mas, se desejar nos abençoar com algo a mais, preparamos uma lista virtual prática e segura.</p>
                 </div>
-                <a href="#" class="btn-icone"><i class="fa-solid fa-gift"></i></a>
+                
+                <div class="botao-curvado-wrapper">
+                    <svg class="texto-curvado-svg" viewBox="0 0 100 100">
+                        <path id="curva-presentes" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"/>
+                        <text><textPath href="#curva-presentes" startOffset="50%" text-anchor="middle">• lista de presentes • lista de presentes</textPath></text>
+                    </svg>
+                    <a href="#" class="btn-circular-premium"><i class="fa-solid fa-gift"></i></a>
+                </div>
             </div>
 
-            <!-- Card 3: Local com Google Maps (Com classe de animação) -->
+            <!-- Card 3: Local com Ícone Curvado -->
             <div class="card animar-scroll">
                 <div>
                     <h3>Local do Evento</h3>
@@ -533,84 +592,19 @@
                 </div>
                 
                 <div class="mapa-container">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.579124483561!2d-39.5846152!3d-16.3703901!2m3!1f0!2f0!3f0!3m2!1i1024!2i1024!4f13.1!3m3!1m2!1s0x7369b76e5d8009b%3A0xcfd6f7902d5a3ef4!2sEspa%C3%A7o%20Eunaflora!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.579124483561!2d-39.5846152!3d-16.3703901!2m3!1f0!2f0!3f0!3m2!1i1024!2i1024!4f13.1!3m3!1m2!1s0x7369b76e5d8009b%3A0xcfd6f7902d5a3ef4!2sEspa%C3%A7o%20Eunaflora!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
                 </div>
 
-                <a href="https://maps.google.com/?q=Espaco+Eunaflora+Eunapolis" target="_blank" class="btn-icone"><i class="fa-solid fa-location-dot"></i></a>
+                <div class="botao-curvado-wrapper">
+                    <svg class="texto-curvado-svg" viewBox="0 0 100 100">
+                        <path id="curva-local" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"/>
+                        <text><textPath href="#curva-local" startOffset="50%" text-anchor="middle">• como chegar no local • como chegar</textPath></text>
+                    </svg>
+                    <a href="https://maps.google.com/?q=Espaco+Eunaflora+Eunapolis" target="_blank" class="btn-circular-premium"><i class="fa-solid fa-map-location-dot"></i></a>
+                </div>
             </div>
 
         </div>
 
         <footer>
-            <p>Tiago & Ricaely • 22.11.2026 • Eunápolis - BA</p>
-        </footer>
-    </div>
-
-    <!-- SCRIPTS DE INTERAÇÃO -->
-    <script>
-        const som = document.getElementById("musica-casamento");
-        const iconePlayer = document.getElementById("icone-player");
-
-        function liberarSite() {
-            document.getElementById("tela-selo").classList.add("esconder-selo");
-            document.getElementById("conteudo-site").classList.add("visivel");
-            
-            // Tenta tocar a música assim que entra no site
-            som.play().then(() => {
-                iconePlayer.classList.remove("fa-music");
-                iconePlayer.classList.add("fa-pause");
-            }).catch(error => {
-                console.log("O navegador bloqueou o autoplay. O usuário pode tocar no botão flutuante.");
-            });
-            
-            // Ativa a verificação de scroll logo após a entrada
-            checarScroll();
-        }
-
-        function alternarMusica() {
-            if (som.paused) {
-                som.play();
-                iconePlayer.classList.remove("fa-play", "fa-music");
-                iconePlayer.classList.add("fa-pause");
-            } else {
-                som.pause();
-                iconePlayer.classList.remove("fa-pause");
-                iconePlayer.classList.add("fa-play");
-            }
-        }
-
-        // SCRIPT DE ANIMAÇÃO AO ROLAR (SCROLL REVEAL)
-        const elementosAnimados = document.querySelectorAll('.animar-scroll');
-
-        function checarScroll() {
-            const gatilhoUsuario = (window.innerHeight / 5) * 4;
-
-            elementosAnimados.forEach(elemento => {
-                const topoElemento = elemento.getBoundingClientRect().top;
-
-                if (topoElemento < gatilhoUsuario) {
-                    elemento.classList.add('em-foco');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', checarScroll);
-
-        // CONTADOR REGRESSIVO
-        const dataCasamento = new Date("Nov 22, 2026 16:00:00").getTime();
-
-        const x = setInterval(function() {
-            const agora = new Date().getTime();
-            const distancia = dataCasamento - agora;
-
-            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-
-            document.getElementById("dias").innerHTML = dias < 10 ? "0" + dias : dias;
-            document.getElementById("horas").innerHTML = ho
+            <p>Tiago & Ricae
