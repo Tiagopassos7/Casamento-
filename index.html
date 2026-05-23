@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Tiago & Ricaely | Casamento</title>
+<title>Tiago & Ricaely — 22.11.2026</title>
 
-<!-- FONTES -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
-<!-- ÍCONES -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
 
 :root{
-    --fundo:#fbf9f6;
-    --branco:#ffffff;
-    --marrom:#4A3525;
-    --preto:#1A1A1A;
-    --texto:#555555;
-    --borda:#DFD9CE;
+    --bg:#f7f3ee;
+    --white:#ffffff;
+    --brown:#4a3525;
+    --gold:#b89b72;
+    --text:#5f5f5f;
+    --border:#e5ddd1;
+    --dark:#1c1c1c;
 }
 
-/* RESET */
 *{
     margin:0;
     padding:0;
@@ -38,25 +36,15 @@ html{
 }
 
 body{
-    background:var(--fundo);
-    color:var(--texto);
-    font-family:'Montserrat',sans-serif;
+    background:var(--bg);
+    color:var(--text);
     overflow-x:hidden;
-    text-align:center;
+    font-family:'Montserrat',sans-serif;
     position:relative;
 }
 
-/* MOLDURA */
-body::before{
-    content:"";
-    position:fixed;
-    inset:14px;
-    border:1px solid var(--borda);
-    z-index:999;
-    pointer-events:none;
-}
+/* PARTICULAS */
 
-/* PARTÍCULAS */
 .particulas{
     position:fixed;
     inset:0;
@@ -66,298 +54,323 @@ body::before{
 
 .particulas span{
     position:absolute;
-    width:3px;
-    height:3px;
+    width:4px;
+    height:4px;
+    background:rgba(184,155,114,.35);
     border-radius:50%;
-    background:rgba(180,150,120,.25);
-    animation:subir linear infinite;
+    animation:flutuar linear infinite;
 }
 
-.particulas span:nth-child(1){
-    left:10%;
-    animation-duration:12s;
-    animation-delay:0s;
-}
+.particulas span:nth-child(1){left:10%;animation-duration:12s;top:100%;}
+.particulas span:nth-child(2){left:20%;animation-duration:17s;top:100%;}
+.particulas span:nth-child(3){left:35%;animation-duration:14s;top:100%;}
+.particulas span:nth-child(4){left:50%;animation-duration:20s;top:100%;}
+.particulas span:nth-child(5){left:65%;animation-duration:15s;top:100%;}
+.particulas span:nth-child(6){left:75%;animation-duration:22s;top:100%;}
+.particulas span:nth-child(7){left:90%;animation-duration:18s;top:100%;}
 
-.particulas span:nth-child(2){
-    left:25%;
-    animation-duration:18s;
-    animation-delay:2s;
-}
-
-.particulas span:nth-child(3){
-    left:40%;
-    animation-duration:16s;
-    animation-delay:1s;
-}
-
-.particulas span:nth-child(4){
-    left:55%;
-    animation-duration:20s;
-    animation-delay:4s;
-}
-
-.particulas span:nth-child(5){
-    left:70%;
-    animation-duration:13s;
-    animation-delay:3s;
-}
-
-.particulas span:nth-child(6){
-    left:85%;
-    animation-duration:19s;
-    animation-delay:5s;
-}
-
-@keyframes subir{
-
+@keyframes flutuar{
     from{
-        transform:translateY(100vh) scale(0);
+        transform:translateY(0);
         opacity:0;
     }
-
     20%{
         opacity:1;
     }
-
     to{
-        transform:translateY(-10vh) scale(1.8);
+        transform:translateY(-120vh);
         opacity:0;
     }
 }
 
-/* TELA INICIAL */
-#tela-abertura{
+/* MOLDURA */
+
+body::before{
+    content:"";
     position:fixed;
-    inset:0;
-    background:var(--fundo);
-    z-index:999999;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    transition:1s ease;
+    inset:14px;
+    border:1px solid rgba(184,155,114,.3);
+    z-index:999;
+    pointer-events:none;
 }
 
-#tela-abertura.esconder{
+/* TELA ENVELOPE */
+
+#tela-envelope{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(to bottom,#f7f3ee,#efe6da);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    z-index:99999;
+    transition:1.2s ease;
+}
+
+#tela-envelope.sumir{
     opacity:0;
     visibility:hidden;
 }
 
-.texto-topo{
-    font-size:.8rem;
+.frase-topo{
     letter-spacing:4px;
     text-transform:uppercase;
-    color:var(--marrom);
-    margin-bottom:10px;
+    font-size:.7rem;
+    margin-bottom:20px;
+    color:var(--brown);
 }
 
-.nomes-topo{
+.monograma-topo{
     font-family:'Cormorant Garamond',serif;
     font-size:4rem;
-    color:var(--preto);
-    font-style:italic;
-    font-weight:300;
-    margin-bottom:45px;
+    color:var(--brown);
+    margin-bottom:40px;
 }
 
-.lacre{
-    width:125px;
-    height:125px;
-    border-radius:50%;
-    background:var(--marrom);
-    border:2px solid #5d4635;
+.envelope{
+    width:340px;
+    height:220px;
+    position:relative;
+}
+
+.corpo-envelope{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#f9f4ed;
+    border:1px solid #d8cab7;
+    box-shadow:0 25px 50px rgba(0,0,0,.08);
+}
+
+.tampa-envelope{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#efe4d5;
+    clip-path:polygon(0 0,100% 0,50% 55%);
+    transform-origin:top;
+    transition:1.2s ease;
+    z-index:5;
+    border:1px solid #d8cab7;
+}
+
+.abrir .tampa-envelope{
+    transform:rotateX(180deg);
+}
+
+.convite-interno{
+    position:absolute;
+    width:88%;
+    height:170px;
+    background:white;
+    left:6%;
+    top:25px;
+    z-index:2;
+    transition:1.3s ease;
     display:flex;
-    flex-direction:column;
-    justify-content:center;
     align-items:center;
-    cursor:pointer;
-    box-shadow:0 12px 30px rgba(0,0,0,.15);
-    animation:pulse 3s infinite ease-in-out;
-    transition:.4s;
+    justify-content:center;
+    flex-direction:column;
+    border:1px solid var(--border);
 }
 
-.lacre:hover{
-    transform:scale(1.04);
-}
-
-@keyframes pulse{
-
-    0%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.05);
-    }
-
-    100%{
-        transform:scale(1);
-    }
-}
-
-.lacre strong{
-    color:#fff;
-    font-family:'Cormorant Garamond',serif;
-    font-size:2rem;
-    font-weight:400;
-}
-
-.lacre span{
-    color:#ddd;
-    text-transform:uppercase;
-    font-size:.55rem;
-    letter-spacing:2px;
-}
-
-.clique{
-    margin-top:35px;
-    font-size:.65rem;
-    letter-spacing:5px;
-    text-transform:uppercase;
-    color:#8c857d;
-}
-
-/* CONTEÚDO */
-#site{
-    opacity:0;
-    transform:translateY(30px);
-    transition:1.5s ease;
-}
-
-#site.ativo{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* HEADER */
-header{
-    padding:100px 20px 50px;
+.abrir .convite-interno{
+    transform:translateY(-130px);
 }
 
 .brasao{
-    width:110px;
-    height:110px;
+    width:90px;
+    height:90px;
     border-radius:50%;
-    border:1px solid var(--marrom);
-    margin:0 auto 30px;
+    border:1px solid var(--gold);
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     position:relative;
+    margin-bottom:12px;
 }
 
 .brasao::after{
     content:"";
     position:absolute;
     inset:5px;
-    border:1px dashed var(--marrom);
+    border:1px dashed rgba(184,155,114,.7);
     border-radius:50%;
-    opacity:.5;
 }
 
 .brasao span{
     font-family:'Cormorant Garamond',serif;
-    font-size:2.2rem;
-    color:var(--marrom);
-    z-index:2;
+    font-size:2rem;
+    color:var(--brown);
 }
 
-h1{
+.convite-interno p{
+    font-size:.7rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--brown);
+}
+
+.lacre{
+    position:absolute;
+    width:85px;
+    height:85px;
+    background:linear-gradient(145deg,#6a4b36,#4a3525);
+    border-radius:50%;
+    left:50%;
+    top:42%;
+    transform:translate(-50%,-50%);
+    z-index:10;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.7rem;
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+    transition:.4s;
+    border:2px solid #7d5a42;
+}
+
+.lacre:hover{
+    transform:translate(-50%,-50%) scale(1.05);
+}
+
+.clique{
+    margin-top:45px;
+    letter-spacing:4px;
+    font-size:.65rem;
+    text-transform:uppercase;
+    color:#85715e;
+}
+
+/* CONTEUDO */
+
+#site{
+    opacity:0;
+    transform:translateY(30px);
+    transition:1.5s ease;
+}
+
+#site.visivel{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* HERO */
+
+.hero{
+    padding:120px 20px 60px;
+    text-align:center;
+}
+
+.monograma-principal{
+    font-family:'Cormorant Garamond',serif;
+    font-size:6rem;
+    color:var(--brown);
+    line-height:1;
+    margin-bottom:25px;
+}
+
+.hero h1{
     font-family:'Cormorant Garamond',serif;
     font-size:4rem;
     font-weight:300;
-    color:var(--preto);
-    letter-spacing:3px;
+    color:var(--dark);
     margin-bottom:10px;
 }
 
 .data{
+    letter-spacing:6px;
     text-transform:uppercase;
-    letter-spacing:7px;
-    color:var(--marrom);
-    font-size:.9rem;
-    margin-bottom:30px;
-}
-
-.divisor{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:15px;
-    color:var(--marrom);
+    font-size:.85rem;
+    color:var(--gold);
     margin-bottom:35px;
 }
 
-.divisor::before,
-.divisor::after{
-    content:"";
-    width:50px;
-    height:1px;
-    background:var(--marrom);
-}
-
-.frase{
+.texto{
     max-width:650px;
-    margin:0 auto 50px;
-    line-height:1.9;
-    font-size:1.3rem;
-    font-style:italic;
+    margin:auto;
+    line-height:2;
+    font-size:1rem;
     font-family:'Cormorant Garamond',serif;
-    padding:0 20px;
+    font-style:italic;
+    color:#5c5c5c;
 }
 
 /* CONTADOR */
-.titulo-contador{
-    font-size:.75rem;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    color:var(--marrom);
-    margin-bottom:18px;
-}
 
 #contador{
+    margin-top:50px;
     display:flex;
     justify-content:center;
-    gap:14px;
+    gap:18px;
     flex-wrap:wrap;
 }
 
-.box-tempo{
-    min-width:90px;
-    padding:15px 12px;
-    background:#fff;
-    border:1px solid var(--borda);
+.box{
+    width:110px;
+    background:white;
+    border:1px solid var(--border);
+    padding:25px 10px;
 }
 
-.numero{
+.box h2{
+    font-size:2.5rem;
     font-family:'Cormorant Garamond',serif;
-    font-size:2.3rem;
-    color:var(--preto);
+    color:var(--brown);
+    font-weight:400;
 }
 
-.rotulo{
-    margin-top:4px;
+.box p{
     font-size:.65rem;
-    letter-spacing:2px;
     text-transform:uppercase;
-    color:var(--marrom);
+    letter-spacing:3px;
+    margin-top:8px;
+}
+
+/* SEÇÕES */
+
+section{
+    padding:40px 20px;
+}
+
+.titulo-secao{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.titulo-secao h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:3rem;
+    color:var(--dark);
+    font-weight:300;
+}
+
+.titulo-secao p{
+    letter-spacing:4px;
+    text-transform:uppercase;
+    font-size:.7rem;
+    margin-top:10px;
+    color:var(--gold);
 }
 
 /* GALERIA */
+
 .galeria{
-    max-width:800px;
-    margin:70px auto;
+    max-width:1200px;
+    margin:auto;
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:20px;
-    padding:0 20px;
 }
 
 .foto{
     overflow:hidden;
-    border:1px solid var(--borda);
-    background:#fff;
+    border:1px solid var(--border);
+    background:white;
     padding:8px;
 }
 
@@ -365,329 +378,390 @@ h1{
     width:100%;
     height:100%;
     object-fit:cover;
+    transition:1s;
     display:block;
-    transition:.8s;
-    filter:grayscale(8%);
 }
 
-.foto img:hover{
-    transform:scale(1.03);
-    filter:grayscale(0%);
+.foto:hover img{
+    transform:scale(1.05);
 }
 
-.foto.grande{
+.grande{
     grid-column:span 2;
-    height:420px;
+    height:500px;
 }
 
-.foto.pequena{
+.media{
+    height:500px;
+}
+
+.pequena{
     height:260px;
 }
 
 /* CARDS */
-.container{
-    max-width:650px;
+
+.cards{
+    max-width:1100px;
     margin:auto;
-    padding:0 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
 }
 
 .card{
-    background:#fff;
-    border:1px solid var(--borda);
-    margin-bottom:40px;
-    padding:50px 30px;
-    box-shadow:0 15px 40px rgba(0,0,0,.03);
+    background:white;
+    border:1px solid var(--border);
+    padding:50px 35px;
+    text-align:center;
+    transition:.5s;
 }
 
-.card h2{
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(0,0,0,.06);
+}
+
+.icone{
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    border:1px solid var(--gold);
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:25px;
+    color:var(--brown);
+    font-size:1.7rem;
+}
+
+.card h3{
     font-family:'Cormorant Garamond',serif;
     font-size:2rem;
-    color:var(--preto);
-    margin-bottom:18px;
+    margin-bottom:15px;
+    color:var(--dark);
     font-weight:400;
 }
 
 .card p{
     line-height:1.9;
-    font-size:.92rem;
-    margin-bottom:35px;
+    font-size:.9rem;
+    margin-bottom:30px;
 }
 
-/* BOTÃO */
-.botao-wrapper{
-    width:120px;
-    height:120px;
-    position:relative;
-    margin:auto;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.botao{
-    width:76px;
-    height:76px;
-    border-radius:50%;
-    border:1px solid var(--marrom);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:var(--marrom);
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    border:1px solid var(--brown);
+    color:var(--brown);
     text-decoration:none;
-    font-size:1.4rem;
-    transition:.4s;
-    background:transparent;
-    z-index:2;
-}
-
-.botao:hover{
-    background:var(--marrom);
-    color:#fff;
-    transform:scale(1.05);
-}
-
-.texto-svg{
-    position:absolute;
-    inset:0;
-    animation:giro 22s linear infinite;
-}
-
-@keyframes giro{
-    from{
-        transform:rotate(0);
-    }
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-.texto-svg text{
-    font-size:7px;
+    letter-spacing:3px;
     text-transform:uppercase;
-    letter-spacing:2px;
-    fill:var(--marrom);
+    font-size:.65rem;
+    transition:.4s;
 }
 
-/* MAPA */
-.mapa{
-    width:100%;
-    height:240px;
-    border:1px solid var(--borda);
-    padding:4px;
-    background:#fff;
+.btn:hover{
+    background:var(--brown);
+    color:white;
+}
+
+/* TIMELINE */
+
+.timeline{
+    max-width:800px;
+    margin:auto;
+    position:relative;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    width:1px;
+    background:var(--gold);
+    top:0;
+    bottom:0;
+    left:50%;
+}
+
+.momento{
+    width:50%;
+    padding:40px;
+    position:relative;
+}
+
+.momento:nth-child(odd){
+    left:0;
+    text-align:right;
+}
+
+.momento:nth-child(even){
+    left:50%;
+}
+
+.bola{
+    width:18px;
+    height:18px;
+    background:var(--gold);
+    border-radius:50%;
+    position:absolute;
+    top:55px;
+    right:-9px;
+}
+
+.momento:nth-child(even) .bola{
+    left:-9px;
+}
+
+.momento h4{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2rem;
+    color:var(--brown);
+    font-weight:400;
+    margin-bottom:10px;
+}
+
+.momento p{
+    line-height:1.8;
+}
+
+/* PIX */
+
+.pix{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    border:1px solid var(--border);
+    padding:60px 40px;
+    text-align:center;
+}
+
+.pix i{
+    font-size:2rem;
+    color:var(--gold);
+    margin-bottom:20px;
+}
+
+.pix h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.5rem;
+    color:var(--dark);
+    margin-bottom:20px;
+    font-weight:300;
+}
+
+.pix p{
+    line-height:2;
     margin-bottom:35px;
 }
 
-.mapa iframe{
-    width:100%;
-    height:100%;
-    border:0;
-}
-
-/* SCROLL */
-.animar{
-    opacity:0;
-    transform:translateY(40px);
-    transition:1.2s;
-}
-
-.animar.mostrar{
-    opacity:1;
-    transform:translateY(0);
+.pix-chave{
+    background:#f8f5f0;
+    border:1px dashed var(--gold);
+    padding:18px;
+    margin-top:20px;
+    letter-spacing:1px;
+    word-break:break-all;
 }
 
 /* PLAYER */
-#player{
+
+#musica-btn{
     position:fixed;
-    right:25px;
-    bottom:25px;
-    width:48px;
-    height:48px;
+    bottom:30px;
+    right:30px;
+    width:55px;
+    height:55px;
     border-radius:50%;
-    background:#fff;
-    border:1px solid var(--borda);
-    display:flex;
-    justify-content:center;
+    background:white;
+    border:1px solid var(--border);
+    display:none;
     align-items:center;
+    justify-content:center;
     cursor:pointer;
-    color:var(--marrom);
-    z-index:2000;
-    box-shadow:0 4px 15px rgba(0,0,0,.08);
-
-    opacity:0;
-    pointer-events:none;
-
-    transition:.4s;
-}
-
-#player:hover{
-    transform:scale(1.08);
+    z-index:9999;
+    color:var(--brown);
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
 /* FOOTER */
+
 footer{
-    margin-top:100px;
-    padding:60px 20px;
-    border-top:1px solid var(--borda);
-    background:#fff;
-    font-size:.75rem;
+    padding:100px 20px;
+    text-align:center;
+}
+
+footer h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:3rem;
+    color:var(--brown);
+    font-weight:300;
+    margin-bottom:20px;
+}
+
+footer p{
     letter-spacing:4px;
     text-transform:uppercase;
+    font-size:.7rem;
 }
 
 /* RESPONSIVO */
-@media(max-width:768px){
 
-    body::before{
-        inset:8px;
-    }
-
-    header{
-        padding-top:80px;
-    }
-
-    h1{
-        font-size:2.7rem;
-        letter-spacing:1px;
-    }
-
-    .nomes-topo{
-        font-size:2.6rem;
-    }
-
-    .frase{
-        font-size:1.1rem;
-    }
+@media(max-width:900px){
 
     .galeria{
         grid-template-columns:1fr;
     }
 
-    .foto.grande{
-        grid-column:span 1;
-        height:300px;
+    .grande,
+    .media,
+    .pequena{
+        height:350px;
+        grid-column:auto;
     }
 
-    .foto.pequena{
-        height:230px;
+    .timeline::before{
+        left:20px;
     }
 
-    .card{
-        padding:40px 22px;
+    .momento{
+        width:100%;
+        left:0 !important;
+        text-align:left !important;
+        padding-left:60px;
     }
 
-    .box-tempo{
-        min-width:72px;
+    .bola{
+        left:11px !important;
     }
 
-    .numero{
-        font-size:1.8rem;
+    .hero h1{
+        font-size:2.7rem;
     }
+
+    .monograma-principal{
+        font-size:4rem;
+    }
+
+    .envelope{
+        width:300px;
+    }
+
 }
 
 </style>
 </head>
-
 <body>
 
-<!-- PARTÍCULAS -->
 <div class="particulas">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
+<span></span><span></span><span></span><span></span><span></span><span></span><span></span>
 </div>
 
-<!-- ÁUDIO -->
-<audio id="musica" loop>
-    <source src="musica.mp3" type="audio/mpeg">
-</audio>
+<audio id="musica" src="musica.mp3" loop></audio>
 
-<!-- PLAYER -->
-<div id="player" onclick="alternarMusica()">
-    <i id="icone-player" class="fa-solid fa-music"></i>
+<div id="musica-btn">
+    <i id="icone-musica" class="fa-solid fa-pause"></i>
 </div>
 
-<!-- ABERTURA -->
-<section id="tela-abertura">
+<!-- ENVELOPE -->
 
-    <div class="texto-topo">
-        Convidamos com a bênção de nossos pais
+<div id="tela-envelope">
+
+    <div class="frase-topo">
+        Convidamos para celebrar o nosso amor
     </div>
 
-    <div class="nomes-topo">
-        Tiago & Ricaely
+    <div class="monograma-topo">
+        T&R
     </div>
 
-    <div class="lacre" onclick="abrirConvite()">
-        <strong>T&R</strong>
-        <span>Abrir</span>
+    <div class="envelope" id="envelope">
+
+        <div class="convite-interno">
+
+            <div class="brasao">
+                <span>T&R</span>
+            </div>
+
+            <p>22 • Novembro • 2026</p>
+
+        </div>
+
+        <div class="tampa-envelope"></div>
+
+        <div class="corpo-envelope"></div>
+
+        <div class="lacre" onclick="abrirConvite()">
+            T&R
+        </div>
+
     </div>
 
     <div class="clique">
-        toque no lacre para abrir
+        Toque no lacre
     </div>
 
-</section>
+</div>
 
 <!-- SITE -->
+
 <div id="site">
 
-<header>
+<section class="hero">
 
-    <div class="brasao">
-        <span>T&R</span>
+    <div class="monograma-principal">
+        T&R
     </div>
 
     <h1>Tiago & Ricaely</h1>
 
     <div class="data">
-        22 . Novembro . 2026
+        22 • Novembro • 2026
     </div>
 
-    <div class="divisor">
-        <i class="fa-solid fa-leaf"></i>
-    </div>
-
-    <div class="frase">
-        “O amor é paciente, o amor é bondoso. Para nós, a maior felicidade será testemunhar o início do nosso felizes para sempre ao lado das pessoas que mais amamos.”
-    </div>
-
-    <div class="titulo-contador">
-        CONTAGEM REGRESSIVA
-    </div>
+    <p class="texto">
+        “O amor é paciente, o amor é bondoso. 
+        E para nós, a maior felicidade será viver o início do nosso felizes para sempre ao lado das pessoas que amamos.”
+    </p>
 
     <div id="contador">
 
-        <div class="box-tempo">
-            <div class="numero" id="dias">00</div>
-            <div class="rotulo">Dias</div>
+        <div class="box">
+            <h2 id="dias">00</h2>
+            <p>Dias</p>
         </div>
 
-        <div class="box-tempo">
-            <div class="numero" id="horas">00</div>
-            <div class="rotulo">Horas</div>
+        <div class="box">
+            <h2 id="horas">00</h2>
+            <p>Horas</p>
         </div>
 
-        <div class="box-tempo">
-            <div class="numero" id="minutos">00</div>
-            <div class="rotulo">Min</div>
+        <div class="box">
+            <h2 id="minutos">00</h2>
+            <p>Minutos</p>
         </div>
 
     </div>
 
-</header>
+</section>
 
 <!-- GALERIA -->
-<section class="galeria animar">
+
+<section>
+
+<div class="titulo-secao">
+    <h2>Nossos Momentos</h2>
+    <p>Memórias do nosso amor</p>
+</div>
+
+<div class="galeria">
 
     <div class="foto grande">
         <img src="casal1.jpg">
     </div>
 
-    <div class="foto pequena">
+    <div class="foto media">
         <img src="casal2.jpg">
     </div>
 
@@ -695,152 +769,167 @@ footer{
         <img src="casal3.jpg">
     </div>
 
-</section>
+    <div class="foto pequena">
+        <img src="casal4.jpg">
+    </div>
 
-<!-- CONTEÚDO -->
-<div class="container">
+    <div class="foto grande">
+        <img src="casal5.jpg">
+    </div>
 
-    <!-- RSVP -->
-    <section class="card animar">
+    <div class="foto pequena">
+        <img src="casal6.jpg">
+    </div>
 
-        <h2>Confirmação de Presença</h2>
+    <div class="foto pequena">
+        <img src="casal7.jpg">
+    </div>
 
-        <p>
-            Para nos ajudar a planejar cada detalhe com carinho,
-            pedimos que confirme sua presença até o dia 22/10/2026.
-        </p>
-
-        <div class="botao-wrapper">
-
-            <svg class="texto-svg" viewBox="0 0 100 100">
-                <path id="curva1"
-                d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"
-                fill="none"/>
-
-                <text>
-                    <textPath href="#curva1"
-                    startOffset="50%"
-                    text-anchor="middle">
-
-                    • confirmar presença • confirmar presença
-
-                    </textPath>
-                </text>
-            </svg>
-
-            <a
-            href="https://docs.google.com/forms/"
-            target="_blank"
-            class="botao">
-
-                <i class="fa-solid fa-user-check"></i>
-
-            </a>
-
-        </div>
-
-    </section>
-
-    <!-- PRESENTES -->
-    <section class="card animar">
-
-        <h2>Lista de Presentes</h2>
-
-        <p>
-            Sua presença é o nosso maior presente.
-            Mas, se desejar nos abençoar com algo a mais,
-            preparamos uma lista especial com muito carinho.
-        </p>
-
-        <div class="botao-wrapper">
-
-            <svg class="texto-svg" viewBox="0 0 100 100">
-
-                <path id="curva2"
-                d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"
-                fill="none"/>
-
-                <text>
-                    <textPath href="#curva2"
-                    startOffset="50%"
-                    text-anchor="middle">
-
-                    • lista de presentes • lista de presentes
-
-                    </textPath>
-                </text>
-
-            </svg>
-
-            <a href="#" class="botao">
-
-                <i class="fa-solid fa-gift"></i>
-
-            </a>
-
-        </div>
-
-    </section>
-
-    <!-- LOCAL -->
-    <section class="card animar">
-
-        <h2>Local do Evento</h2>
-
-        <p>
-            Nossa celebração começará pontualmente às 16:00h
-            no Espaço Eunaflora, em Eunápolis - BA.
-        </p>
-
-        <div class="mapa">
-
-            <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.579124483561!2d-39.5846152!3d-16.3703901!2m3!1f0!2f0!3f0!3m2!1i1024!2i1024!4f13.1!3m3!1m2!1s0x7369b76e5d8009b%3A0xcfd6f7902d5a3ef4!2sEspa%C3%A7o%20Eunaflora!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr"
-            loading="lazy"
-            allowfullscreen>
-
-            </iframe>
-
-        </div>
-
-        <div class="botao-wrapper">
-
-            <svg class="texto-svg" viewBox="0 0 100 100">
-
-                <path id="curva3"
-                d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"
-                fill="none"/>
-
-                <text>
-                    <textPath href="#curva3"
-                    startOffset="50%"
-                    text-anchor="middle">
-
-                    • como chegar • como chegar
-
-                    </textPath>
-                </text>
-
-            </svg>
-
-            <a
-            href="https://maps.google.com/?q=Espaco+Eunaflora+Eunapolis"
-            target="_blank"
-            class="botao">
-
-                <i class="fa-solid fa-map-location-dot"></i>
-
-            </a>
-
-        </div>
-
-    </section>
+    <div class="foto grande">
+        <img src="casal8.jpg">
+    </div>
 
 </div>
 
+</section>
+
+<!-- CARDS -->
+
+<section>
+
+<div class="cards">
+
+<div class="card">
+
+    <div class="icone">
+        <i class="fa-solid fa-envelope-open-text"></i>
+    </div>
+
+    <h3>Confirmação</h3>
+
+    <p>
+        Para nos ajudar a preparar cada detalhe com carinho, confirme sua presença até o dia 22/10/2026.
+    </p>
+
+    <a href="https://docs.google.com/forms/" target="_blank" class="btn">
+        Confirmar
+    </a>
+
+</div>
+
+<div class="card">
+
+    <div class="icone">
+        <i class="fa-solid fa-location-dot"></i>
+    </div>
+
+    <h3>Local</h3>
+
+    <p>
+        Nossa celebração acontecerá às 16h no Espaço Eunaflora, em Eunápolis — Bahia.
+    </p>
+
+    <a href="https://maps.google.com/?q=Espaco+Eunaflora+Eunapolis" target="_blank" class="btn">
+        Como chegar
+    </a>
+
+</div>
+
+<div class="card">
+
+    <div class="icone">
+        <i class="fa-solid fa-house"></i>
+    </div>
+
+    <h3>Nosso Novo Lar</h3>
+
+    <p>
+        Sua presença já é o nosso maior presente. Mas para aqueles que desejarem nos abençoar de outra forma, deixamos uma maneira simples e carinhosa de contribuir com o início da nossa nova jornada.
+    </p>
+
+    <a href="#pix" class="btn">
+        Ver detalhes
+    </a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TIMELINE -->
+
+<section>
+
+<div class="titulo-secao">
+    <h2>Nossa História</h2>
+    <p>Capítulos da nossa jornada</p>
+</div>
+
+<div class="timeline">
+
+<div class="momento">
+    <div class="bola"></div>
+    <h4>18.01.2025</h4>
+    <p>O início da nossa história de amor.</p>
+</div>
+
+<div class="momento">
+    <div class="bola"></div>
+    <h4>18.01.2026</h4>
+    <p>O dia do nosso noivado.</p>
+</div>
+
+<div class="momento">
+    <div class="bola"></div>
+    <h4>18.11.2026</h4>
+    <p>Nosso casamento civil.</p>
+</div>
+
+<div class="momento">
+    <div class="bola"></div>
+    <h4>22.11.2026</h4>
+    <p>O nosso grande “sim”.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- PIX -->
+
+<section id="pix">
+
+<div class="pix">
+
+    <i class="fa-solid fa-heart"></i>
+
+    <h3>Com Amor</h3>
+
+    <p>
+        Sua presença é o que tornará esse momento inesquecível para nós.
+        Mas, para familiares e amigos que desejarem nos presentear de outra forma, deixamos abaixo uma maneira simples e carinhosa de contribuir com o nosso novo lar.
+    </p>
+
+    <a class="btn" onclick="copiarPix()">
+        Copiar chave Pix
+    </a>
+
+    <div class="pix-chave" id="pix-chave">
+        SEU-PIX-AQUI
+    </div>
+
+</div>
+
+</section>
+
 <footer>
 
-    Tiago & Ricaely • 22.11.2026 • Eunápolis - BA
+    <h2>Tiago & Ricaely</h2>
+
+    <p>
+        Eunápolis • Bahia • 22 Novembro 2026
+    </p>
 
 </footer>
 
@@ -848,63 +937,59 @@ footer{
 
 <script>
 
-/* ÁUDIO */
 const musica = document.getElementById("musica");
-const icone = document.getElementById("icone-player");
+const tela = document.getElementById("tela-envelope");
+const site = document.getElementById("site");
+const envelope = document.getElementById("envelope");
+const musicaBtn = document.getElementById("musica-btn");
+const iconeMusica = document.getElementById("icone-musica");
 
-/* ABRIR SITE */
 function abrirConvite(){
 
-    document
-    .getElementById("tela-abertura")
-    .classList
-    .add("esconder");
+    envelope.classList.add("abrir");
 
-    document
-    .getElementById("site")
-    .classList
-    .add("ativo");
+    setTimeout(()=>{
 
-    const player = document.getElementById("player");
+        tela.classList.add("sumir");
+        site.classList.add("visivel");
 
-    player.style.opacity = "1";
-    player.style.pointerEvents = "all";
+        musica.play();
 
-    musica.volume = 0.35;
+        musicaBtn.style.display = "flex";
 
-    musica.play()
-    .then(() => {
+    },1400);
 
-        icone.className = "fa-solid fa-pause";
-
-    })
-    .catch(() => {
-
-        icone.className = "fa-solid fa-music";
-
-    });
-
-    revelarScroll();
 }
 
-/* PLAYER */
-function alternarMusica(){
+musicaBtn.addEventListener("click",()=>{
 
     if(musica.paused){
 
         musica.play();
-        icone.className = "fa-solid fa-pause";
+        iconeMusica.className = "fa-solid fa-pause";
 
     }else{
 
         musica.pause();
-        icone.className = "fa-solid fa-music";
+        iconeMusica.className = "fa-solid fa-play";
+
     }
+
+});
+
+function copiarPix(){
+
+    const chave = document.getElementById("pix-chave").innerText;
+
+    navigator.clipboard.writeText(chave);
+
+    alert("Chave Pix copiada!");
+
 }
 
 /* CONTADOR */
-const dataCasamento =
-new Date("Nov 22, 2026 16:00:00").getTime();
+
+const dataCasamento = new Date("Nov 22, 2026 16:00:00").getTime();
 
 function atualizarContador(){
 
@@ -912,60 +997,21 @@ function atualizarContador(){
 
     const distancia = dataCasamento - agora;
 
-    if(distancia < 0){
+    const dias = Math.floor(distancia / (1000*60*60*24));
 
-        document.getElementById("contador").innerHTML =
-        "<div class='box-tempo'>É HOJE!</div>";
+    const horas = Math.floor((distancia % (1000*60*60*24)) / (1000*60*60));
 
-        return;
-    }
+    const minutos = Math.floor((distancia % (1000*60*60)) / (1000*60));
 
-    const dias =
-    Math.floor(distancia / (1000 * 60 * 60 * 24));
+    document.getElementById("dias").innerHTML = dias;
+    document.getElementById("horas").innerHTML = horas;
+    document.getElementById("minutos").innerHTML = minutos;
 
-    const horas =
-    Math.floor(
-        (distancia % (1000 * 60 * 60 * 24))
-        / (1000 * 60 * 60)
-    );
-
-    const minutos =
-    Math.floor(
-        (distancia % (1000 * 60 * 60))
-        / (1000 * 60)
-    );
-
-    document.getElementById("dias").innerText = dias;
-    document.getElementById("horas").innerText = horas;
-    document.getElementById("minutos").innerText = minutos;
 }
 
 atualizarContador();
 
 setInterval(atualizarContador,1000);
-
-/* SCROLL REVEAL */
-const elementos =
-document.querySelectorAll(".animar");
-
-function revelarScroll(){
-
-    const gatilho =
-    window.innerHeight * 0.85;
-
-    elementos.forEach(el => {
-
-        const topo =
-        el.getBoundingClientRect().top;
-
-        if(topo < gatilho){
-
-            el.classList.add("mostrar");
-        }
-    });
-}
-
-window.addEventListener("scroll", revelarScroll);
 
 </script>
 
