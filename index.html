@@ -38,6 +38,7 @@
             position: relative;
         }
 
+        /* Moldura do site - Agora configurada para nunca bloquear cliques */
         body::before {
             content: "";
             position: fixed;
@@ -46,7 +47,7 @@
             right: 15px;
             bottom: 15px;
             border: 1px solid var(--cor-borda);
-            pointer-events: none;
+            pointer-events: none; /* Garante que o clique passe por ela */
             z-index: 999;
         }
 
@@ -84,7 +85,7 @@
             z-index: 2;
         }
 
-        /* ✉️ TELA DE ABERTURA MODIFICADA (SEM AS DOBRAS QUE BLOQUEAVAM O CLIQUE) */
+        /* ✉️ TELA DE ABERTURA - CORRIGIDA */
         #tela-selo {
             position: fixed;
             top: 0;
@@ -96,7 +97,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 99999; /* Z-index altíssimo garantido */
+            z-index: 99999; /* Fica à frente da moldura */
             opacity: 1;
             visibility: visible;
             transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
@@ -120,7 +121,7 @@
             font-weight: 300;
         }
 
-        /* Área de toque limpa e sem barreiras CSS */
+        /* Área do botão com prioridade total de clique */
         .area-botao-lacre {
             position: relative;
             width: 200px;
@@ -129,9 +130,10 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
+            z-index: 999999; /* Superior a qualquer outro elemento */
         }
 
-        /* Selo de Cera Premium Estilizado */
+        /* Selo de Cera Premium */
         .selo-lacre-real {
             background: var(--cor-marrom);
             border: 2px solid #5a4230;
@@ -144,6 +146,7 @@
             align-items: center;
             box-shadow: 0 8px 20px rgba(74, 53, 37, 0.3), inset 0 0 10px rgba(0,0,0,0.5);
             transition: transform 0.2s ease;
+            pointer-events: none; /* Faz o clique focar direto na área-mãe */
         }
 
         .area-botao-lacre:hover .selo-lacre-real {
@@ -179,7 +182,7 @@
             font-weight: 500;
         }
 
-        /* Classe que remove a tela inicial */
+        /* Remove completamente a tela inicial */
         .esconder-selo {
             opacity: 0 !important;
             visibility: hidden !important;
@@ -495,7 +498,7 @@
 </head>
 <body>
 
-    <!-- ELEMENTO DE ÁUDIO REATIVADO -->
+    <!-- ELEMENTO DE ÁUDIO -->
     <audio id="musica-casamento" src="musica.mp3" loop></audio>
 
     <!-- PLAYER FLUTUANTE -->
@@ -503,12 +506,12 @@
         <i id="icone-player" class="fa-solid fa-music"></i>
     </div>
 
-    <!-- ✉️ TELA DE ABERTURA COM ESTRUTURA DE CLIQUE LIMPA -->
+    <!-- ✉️ TELA DE ABERTURA CORRIGIDA -->
     <div id="tela-selo">
         <div class="texto-envelope-topo">Convidamos com a bênção de nossos pais</div>
         <div class="nomes-envelope">Tiago & Ricaely</div>
         
-        <!-- O clique agora engloba toda a área sem interferências visuais -->
+        <!-- Área de Toque Totalmente Desimpedida -->
         <div class="area-botao-lacre" onclick="abrirOConviteDefinitivo()">
             <div class="selo-lacre-real">
                 <div class="texto-lacre">T&R</div>
@@ -607,14 +610,4 @@
                         <text><textPath href="#curva-local" startOffset="50%" text-anchor="middle">• como chegar no local • como chegar</textPath></text>
                     </svg>
                     <a href="https://maps.google.com/?q=Espaco+Eunaflora+Eunapolis" target="_blank" class="btn-circular-premium"><i class="fa-solid fa-map-location-dot"></i></a>
-                </div>
-            </div>
-
-        </div>
-
-        <footer>
-            <p>Tiago & Ricaely • 22.11.2026 • Eunápolis - BA</p>
-        </footer>
-    </div>
-
-    <!
+          
