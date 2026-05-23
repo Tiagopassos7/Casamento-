@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casamento de Tiago & Ricaely</title>
+    
     <!-- Importação de Fontes Elegantes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Montserrat:wght@100;300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Ícones (FontAwesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         :root {
@@ -33,7 +37,30 @@
             overflow-x: hidden;
         }
 
-        /* 1. TELA DO SELO (PORTAL DE ENTRADA) */
+        /* LOGO / MONOGRAMA PREMIUM DO CASAL */
+        .logo-casal {
+            width: 90px;
+            height: 90px;
+            border: 1px solid var(--cor-marrom);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px auto;
+            background-color: transparent;
+            box-shadow: 0 4px 10px rgba(62, 39, 35, 0.05);
+        }
+
+        .logo-texto {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--cor-marrom);
+            letter-spacing: 2px;
+            font-weight: 300;
+            margin-left: 2px;
+        }
+
+        /* TELA DO SELO DE ENTRADA */
         #tela-selo {
             position: fixed;
             top: 0;
@@ -53,18 +80,18 @@
             border: 1px solid var(--cor-marrom);
             padding: 50px 40px;
             text-align: center;
-            background-color: rgba(17, 17, 17, 0.8);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            background-color: rgba(17, 17, 17, 0.9);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
             max-width: 90%;
-            width: 320px;
+            width: 340px;
         }
 
-        .selo-monograma {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
+        .selo-container .logo-casal {
+            border-color: #ffffff;
+        }
+        
+        .selo-container .logo-texto {
             color: #ffffff;
-            letter-spacing: 7px;
-            margin-bottom: 10px;
         }
 
         .selo-linha {
@@ -86,7 +113,7 @@
             background: transparent;
             color: #ffffff;
             border: 1px solid #ffffff;
-            padding: 10px 25px;
+            padding: 12px 30px;
             font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -99,19 +126,17 @@
             color: var(--cor-preto);
         }
 
-        /* Classe para esconder o selo com animação */
         .esconder-selo {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
         }
 
-        /* 2. CONTEÚDO PRINCIPAL (SITE) */
+        /* CONTEÚDO PRINCIPAL DO SITE */
         #conteudo-site {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 1.5s ease, transform 1.5s ease;
-            max-width: 100%;
         }
 
         #conteudo-site.visivel {
@@ -121,14 +146,6 @@
 
         header {
             padding: 80px 20px 30px 20px;
-        }
-
-        .monograma {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            color: var(--cor-marrom);
-            letter-spacing: 5px;
-            margin-bottom: 20px;
         }
 
         h1 {
@@ -146,10 +163,9 @@
             letter-spacing: 5px;
             color: var(--cor-marrom);
             font-weight: 600;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
-        /* Texto de Boas-Vindas afetivo */
         .texto-introducao {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.3rem;
@@ -198,7 +214,7 @@
             margin-top: 5px;
         }
 
-        /* GALERIA DE FOTOS INTEGRADA */
+        /* Galeria de Fotos */
         .galeria-container {
             max-width: 600px;
             margin: 40px auto;
@@ -210,15 +226,16 @@
 
         .foto-item {
             width: 100%;
+            height: 250px;
             overflow: hidden;
             border: 1px solid var(--cor-borda);
             background-color: #fff;
             padding: 6px;
         }
 
-        /* Deixa a primeira foto com destaque horizontal */
         .foto-item.grande {
             grid-column: span 2;
+            height: 350px;
         }
 
         .galeria-container img {
@@ -226,7 +243,7 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            filter: grayscale(30%); /* Leve efeito elegante */
+            filter: grayscale(15%);
             transition: filter 0.5s ease;
         }
 
@@ -234,14 +251,13 @@
             filter: grayscale(0%);
         }
 
-        /* Container dos Cards */
+        /* Cards e Ícones */
         .container {
             max-width: 550px;
             margin: 0 auto;
             padding: 10px 20px;
         }
 
-        /* Cards Uniformes */
         .card {
             background: var(--cor-card-bg);
             margin: 35px 0;
@@ -252,6 +268,12 @@
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+            color: var(--cor-marrom);
+            margin-bottom: 12px;
         }
 
         .card h3 {
@@ -320,20 +342,25 @@
 </head>
 <body>
 
-    <!-- 1. TELA DO SELO (PORTAL DE ENTRADA) -->
+    <!-- 1. TELA DO SELO DE ENTRADA COM A LOGO -->
     <div id="tela-selo">
         <div class="selo-container">
-            <div class="selo-monograma">T & R</div>
+            <div class="logo-casal">
+                <div class="logo-texto">T&R</div>
+            </div>
             <div class="selo-linha"></div>
             <div class="selo-data">22 . 11 . 2026</div>
             <button class="btn-entrar" onclick="liberarSite()">Entrar na Celebração</button>
         </div>
     </div>
 
-    <!-- 2. CONTEÚDO DO SITE (REVELADO DEPOIS DO CLIQUE) -->
+    <!-- 2. CONTEÚDO PRINCIPAL DO SITE -->
     <div id="conteudo-site">
         <header>
-            <div class="monograma">T & R</div>
+            <div class="logo-casal">
+                <div class="logo-texto">T&R</div>
+            </div>
+            
             <h1>Tiago & Ricaely</h1>
             <div class="data-casamento">22 . Novembro . 2026</div>
             
@@ -343,7 +370,9 @@
             
             <div class="divisor"></div>
             
-            <!-- Contador -->
+            <div style="margin-bottom: 10px; color: var(--cor-marrom); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">
+                <i class="fa-regular fa-calendar-days" style="margin-right: 5px;"></i> Contagem Regressiva
+            </div>
             <div id="contador">
                 <div class="tempo-box"><div class="tempo-numero" id="dias">00</div><div class="tempo-rotulo">Dias</div></div>
                 <div class="tempo-box"><div class="tempo-numero" id="horas">00</div><div class="tempo-rotulo">Horas</div></div>
@@ -351,19 +380,16 @@
             </div>
         </header>
 
-        <!-- GALERIA DE FOTOS CONCEITUAL -->
+        <!-- GALERIA DE FOTOS CONFIGURADA PARA OS SEUS ARQUIVOS -->
         <div class="galeria-container">
             <div class="foto-item grande">
-                <!-- Foto de destaque (Preenchimento) -->
-                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000" alt="Casal 1">
+                <img src="casal1.jpg" alt="Tiago & Ricaely">
             </div>
             <div class="foto-item">
-                <!-- Foto 2 -->
-                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600" alt="Casal 2">
+                <img src="casal2.jpg" alt="Tiago & Ricaely">
             </div>
             <div class="foto-item">
-                <!-- Foto 3 -->
-                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600" alt="Casal 3">
+                <img src="casal3.jpg" alt="Tiago & Ricaely">
             </div>
         </div>
 
@@ -372,6 +398,7 @@
             <!-- Card 1: Presença -->
             <div class="card">
                 <div>
+                    <div class="card-icon"><i class="fa-regular fa-circle-check"></i></div>
                     <h3>Confirmação de Presença</h3>
                     <p>Para nos ajudar a planejar cada detalhe com carinho, por favor, confirme sua presença preenchendo o formulário até o dia 22/10/2026.</p>
                 </div>
@@ -381,6 +408,7 @@
             <!-- Card 2: Presentes -->
             <div class="card">
                 <div>
+                    <div class="card-icon"><i class="fa-solid fa-gift"></i></div>
                     <h3>Lista de Presentes</h3>
                     <p>Sua companhia é o nosso maior presente! Mas, se desejar nos abençoar com algo a mais, preparamos uma lista virtual prática e segura.</p>
                 </div>
@@ -390,6 +418,7 @@
             <!-- Card 3: Local com Google Maps -->
             <div class="card">
                 <div>
+                    <div class="card-icon"><i class="fa-solid fa-location-dot"></i></div>
                     <h3>Local do Evento</h3>
                     <p>A nossa celebração começará pontualmente às 16:00h no lindo <strong>Espaço Eunaflora</strong>, em Eunápolis - BA.</p>
                 </div>
@@ -415,13 +444,11 @@
 
     <!-- SCRIPTS DE INTERAÇÃO -->
     <script>
-        // Função para sumir com o selo e mostrar o site
         function liberarSite() {
             document.getElementById("tela-selo").classList.add("esconder-selo");
             document.getElementById("conteudo-site").classList.add("visivel");
         }
 
-        // Contagem Regressiva para 22/11/2026 às 16:00
         const dataCasamento = new Date("Nov 22, 2026 16:00:00").getTime();
 
         const x = setInterval(function() {
