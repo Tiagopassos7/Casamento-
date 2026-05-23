@@ -4,151 +4,218 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casamento de Tiago & Ricaely</title>
+    <!-- Importação de Fontes Elegantes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --cor-fundo: #ffffff;
-            --cor-card-bg: #fafafa;
+            --cor-fundo: #fcfbfa;
+            --cor-card-bg: #ffffff;
             --cor-marrom: #3E2723; /* Marrom Escuro Nobre */
             --cor-preto: #111111;
-            --cor-texto: #333333;
-            --cor-borda: #eeeeee;
+            --cor-texto: #444444;
+            --cor-borda: #e8e5e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             background-color: var(--cor-fundo);
             color: var(--cor-texto);
-            margin: 0;
-            padding: 0;
             text-align: center;
+            background-image: radial-gradient(rgba(62, 39, 35, 0.02) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+
+        /* Efeito de carregamento elegante */
+        .fade-in {
+            animation: fadeIn ease 1.5s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         header {
-            padding: 60px 20px 30px 20px;
+            padding: 80px 20px 40px 20px;
+        }
+
+        .monograma {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--cor-marrom);
+            letter-spacing: 5px;
+            margin-bottom: 20px;
         }
 
         h1 {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 2.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
             color: var(--cor-preto);
-            margin-bottom: 5px;
-            letter-spacing: 3px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
             font-weight: 300;
         }
 
         .data-casamento {
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             color: var(--cor-marrom);
             font-weight: 600;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
-        /* Contador de Tempo Simétrico */
+        .divisor {
+            width: 50px;
+            height: 1px;
+            background-color: var(--cor-marrom);
+            margin: 0 auto 40px auto;
+        }
+
+        /* Contador de Tempo Premium */
         #contador {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
             margin: 20px auto;
-            max-width: 400px;
+            max-width: 450px;
         }
 
         .tempo-box {
             background: var(--cor-card-bg);
-            padding: 12px;
-            border-radius: 4px;
+            padding: 15px;
+            border-radius: 0px; /* Estilo minimalista quadrado */
             border: 1px solid var(--cor-borda);
-            min-width: 75px;
-            box-sizing: border-box;
+            min-width: 85px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
         }
 
         .tempo-numero {
-            font-size: 1.6rem;
-            font-weight: bold;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 300;
             color: var(--cor-preto);
         }
 
         .tempo-rotulo {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             color: var(--cor-marrom);
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            margin-top: 5px;
         }
 
         /* Container dos Blocos de Conteúdo */
         .container {
-            max-width: 550px;
+            max-width: 600px;
             margin: 0 auto;
-            padding: 10px 20px;
+            padding: 20px;
         }
 
-        /* Layout Uniforme dos Cards */
+        /* Layout Uniforme e Vivo dos Cards */
         .card {
             background: var(--cor-card-bg);
-            margin: 20px 0;
-            padding: 35px 25px;
-            border-radius: 6px;
+            margin: 35px 0;
+            padding: 40px 30px;
+            border-radius: 0px;
             border: 1px solid var(--cor-borda);
-            box-sizing: border-box;
-            min-height: 220px; /* Garante tamanho idêntico entre os elementos */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
         }
 
         .card h3 {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 1.4rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
             color: var(--cor-preto);
-            margin: 0 0 10px 0;
-            letter-spacing: 1px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            font-weight: 400;
         }
 
         .card p {
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.9rem;
+            line-height: 1.8;
             color: var(--cor-texto);
-            margin: 0 0 20px 0;
+            margin-bottom: 25px;
+            font-weight: 200;
         }
 
-        /* Botões Padronizados */
+        /* Botões Padronizados Premium */
         .btn {
             display: inline-block;
-            background-color: var(--cor-marrom);
+            background-color: var(--cor-preto);
             color: #ffffff;
-            padding: 12px 35px;
+            padding: 14px 40px;
             text-decoration: none;
-            border-radius: 2px;
-            font-size: 0.85rem;
-            font-weight: bold;
+            font-size: 0.8rem;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             transition: all 0.3s ease;
-            width: 80%;
-            max-width: 280px;
+            width: 100%;
+            max-width: 300px;
+            border: 1px solid var(--cor-preto);
         }
 
         .btn:hover {
-            background-color: var(--cor-preto);
+            background-color: transparent;
+            color: var(--cor-preto);
+            border: 1px solid var(--cor-preto);
+        }
+
+        /* Área do Google Maps Integrado */
+        .mapa-container {
+            width: 100%;
+            height: 250px;
+            margin-bottom: 25px;
+            border: 1px solid var(--cor-borda);
+            background-color: #eee;
+        }
+
+        .mapa-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         footer {
-            margin-top: 50px;
-            padding: 30px 20px;
-            font-size: 0.8rem;
-            color: #999999;
-            letter-spacing: 1px;
+            margin-top: 80px;
+            padding: 40px 20px;
+            font-size: 0.75rem;
+            color: #888888;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            border-top: 1px solid var(--cor-borda);
+            background-color: #ffffff;
         }
     </style>
 </head>
-<body>
+<body class="fade-in">
 
     <header>
+        <div class="monograma">T & R</div>
         <h1>Tiago & Ricaely</h1>
-        <div class="data-casamento">22 . NOVEMBRO . 2026</div>
+        <div class="data-casamento">22 . Novembro . 2026</div>
+        <div class="divisor"></div>
         
         <!-- Contador -->
         <div id="contador">
@@ -164,9 +231,8 @@
         <div class="card">
             <div>
                 <h3>Confirmação de Presença</h3>
-                <p>Sua presença é essencial para nós. Por favor, confirme o preenchimento dos dados até o dia 22/10/2026.</p>
+                <p>Sua presença é essencial para tornar nosso dia inesquecível. Por favor, confirme o preenchimento dos dados até o dia 22/10/2026.</p>
             </div>
-            <!-- Cole o link do seu formulário no href -->
             <a href="https://forms.google.com" target="_blank" class="btn">Confirmar Presença</a>
         </div>
 
@@ -174,26 +240,36 @@
         <div class="card">
             <div>
                 <h3>Lista de Presentes</h3>
-                <p>Criamos uma lista de presentes virtual para quem deseja nos presentear com facilidade e segurança.</p>
+                <p>Para sua comodidade, organizamos uma lista de presentes virtual onde você pode nos presentear de forma simples, segura e prática.</p>
             </div>
-            <!-- Cole o link da sua lista de presentes aqui -->
             <a href="#" class="btn">Acessar Lista</a>
         </div>
 
-        <!-- Card 3: Local -->
+        <!-- Card 3: Local com GOOGLE MAPS INTEGRADO -->
         <div class="card">
             <div>
                 <h3>Local do Evento</h3>
-                <p>A cerimônia e a recepção serão realizadas às 16:00h no Espaço Eunaflora, em Eunápolis - BA.</p>
+                <p>A celebração acontecerá às 16:00h no elegante <strong>Espaço Eunaflora</strong>, localizado em Eunápolis - BA.</p>
             </div>
-            <!-- Cole o link do Google Maps / Waze aqui -->
-            <a href="https://maps.google.com" target="_blank" class="btn">Como Chegar</a>
+            
+            <!-- MAPA REAL DO GOOGLE MAPS -->
+            <div class="mapa-container">
+                <!-- Mapa configurado para busca pelo Espaço Eunaflora em Eunápolis -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.579124483561!2d-39.5846152!3d-16.3703901!2m3!1f0!2f0!3f0!3m2!1i1024!2i1024!4f13.1!3m3!1m2!1s0x7369b76e5d8009b%3A0xcfd6f7902d5a3ef4!2sEspa%C3%A7o%20Eunaflora!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe >
+            </div>
+
+            <a href="https://maps.google.com/?q=Espaco+Eunaflora+Eunapolis" target="_blank" class="btn">Abrir no Aplicativo</a>
         </div>
 
     </div>
 
     <footer>
-        <p>Tiago & Ricaely • 2026</p>
+        <p>Tiago & Ricaely • 22.11.2026 • Eunápolis - BA</p>
     </footer>
 
     <script>
@@ -208,13 +284,14 @@
             const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
 
-            document.getElementById("dias").innerHTML = dias;
-            document.getElementById("horas").innerHTML = horas;
-            document.getElementById("minutos").innerHTML = minutes;
+            // Ajuste para evitar números negativos
+            document.getElementById("dias").innerHTML = dias < 10 ? "0" + dias : dias;
+            document.getElementById("horas").innerHTML = horas < 10 ? "0" + horas : horas;
+            document.getElementById("minutos").innerHTML = minutos < 10 ? "0" + minutos : minutos;
 
             if (distancia < 0) {
                 clearInterval(x);
-                document.getElementById("contador").innerHTML = "É HOJE!";
+                document.getElementById("contador").innerHTML = "<div class='tempo-box' style='width:100%; font-size:1.5rem; font-family:Cormorant Garamond, serif;'>É HOJE!</div>";
             }
         }, 1000);
     </script>
