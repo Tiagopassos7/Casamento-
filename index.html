@@ -270,12 +270,6 @@
             align-items: center;
         }
 
-        .card-icon {
-            font-size: 1.5rem;
-            color: var(--cor-marrom);
-            margin-bottom: 12px;
-        }
-
         .card h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.6rem;
@@ -292,26 +286,27 @@
             font-weight: 300;
         }
 
-        /* Botões */
-        .btn {
-            display: inline-block;
+        /* BOTÕES SÓ COM ÍCONES (ESTILO MINIMALISTA) */
+        .btn-icone {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background-color: var(--cor-preto);
             color: #ffffff;
-            padding: 13px 35px;
+            width: 70px;
+            height: 70px;
             text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-size: 1.6rem; /* Ícone grande e destacado */
+            border-radius: 50%; /* Botão perfeitamente redondo */
             transition: all 0.3s ease;
-            width: 100%;
-            max-width: 280px;
             border: 1px solid var(--cor-preto);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .btn:hover {
+        .btn-icone:hover {
             background-color: transparent;
             color: var(--cor-preto);
+            transform: scale(1.05);
         }
 
         /* Google Maps */
@@ -365,7 +360,7 @@
             <div class="data-casamento">22 . Novembro . 2026</div>
             
             <p class="texto-introducao">
-                "O amor é paciente, o amor é bondoso. Para nós, a maior felicidade será testemunhar o início do nosso felizes para sempre ao lado das pessoas que mais amamos. Sejam bem-vindos ao nosso espaço dedicado a este grande dia."
+                "O amor é paciente, o amor é bondoso. Para nós, a maior felicidade será testemunhar o início do nosso felizes para sempre ao lado das pessoas que mais amamos. Sejam bem-vindos ao nosso space dedicado a este grande dia."
             </p>
             
             <div class="divisor"></div>
@@ -398,27 +393,26 @@
             <!-- Card 1: Presença -->
             <div class="card">
                 <div>
-                    <div class="card-icon"><i class="fa-regular fa-circle-check"></i></div>
                     <h3>Confirmação de Presença</h3>
                     <p>Para nos ajudar a planejar cada detalhe com carinho, por favor, confirme sua presença preenchendo o formulário até o dia 22/10/2026.</p>
                 </div>
-                <a href="https://forms.google.com" target="_blank" class="btn">Confirmar Presença</a>
+                <!-- Botão circular apenas com o ícone de Check -->
+                <a href="https://forms.google.com" target="_blank" class="btn-icone"><i class="fa-solid fa-check"></i></a>
             </div>
 
             <!-- Card 2: Presentes -->
             <div class="card">
                 <div>
-                    <div class="card-icon"><i class="fa-solid fa-gift"></i></div>
                     <h3>Lista de Presentes</h3>
                     <p>Sua companhia é o nosso maior presente! Mas, se desejar nos abençoar com algo a mais, preparamos uma lista virtual prática e segura.</p>
                 </div>
-                <a href="#" class="btn">Acessar Lista</a>
+                <!-- Botão circular apenas com o ícone de Presente -->
+                <a href="#" class="btn-icone"><i class="fa-solid fa-gift"></i></a>
             </div>
 
             <!-- Card 3: Local com Google Maps -->
             <div class="card">
                 <div>
-                    <div class="card-icon"><i class="fa-solid fa-location-dot"></i></div>
                     <h3>Local do Evento</h3>
                     <p>A nossa celebração começará pontualmente às 16:00h no lindo <strong>Espaço Eunaflora</strong>, em Eunápolis - BA.</p>
                 </div>
@@ -432,7 +426,8 @@
                     </iframe>
                 </div>
 
-                <a href="https://maps.google.com/?q=Espaco+Eunaflora+Eunapolis" target="_blank" class="btn">Abrir no Aplicativo</a>
+                <!-- Botão circular apenas com o ícone de Localização / Seta de Rota -->
+                <a href="https://maps.google.com/?q=Espaco+Eunaflora+Eunapolis" target="_blank" class="btn-icone"><i class="fa-solid fa-location-dot"></i></a>
             </div>
 
         </div>
@@ -461,7 +456,7 @@
 
             document.getElementById("dias").innerHTML = dias < 10 ? "0" + dias : dias;
             document.getElementById("horas").innerHTML = horas < 10 ? "0" + horas : horas;
-            document.getElementById("minutos").innerHTML = minutos < 10 ? "0" + minutos : minutos;
+            document.getElementById("minutos").innerHTML = minutos < 10 ? "0" + minutes : minutos;
 
             if (distancia < 0) {
                 clearInterval(x);
