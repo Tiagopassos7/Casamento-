@@ -38,7 +38,7 @@
             position: relative;
         }
 
-        /* Moldura do site - Agora configurada para nunca bloquear cliques */
+        /* Moldura do site - pointer-events garante que ela não bloqueie nada */
         body::before {
             content: "";
             position: fixed;
@@ -47,7 +47,7 @@
             right: 15px;
             bottom: 15px;
             border: 1px solid var(--cor-borda);
-            pointer-events: none; /* Garante que o clique passe por ela */
+            pointer-events: none; 
             z-index: 999;
         }
 
@@ -85,7 +85,7 @@
             z-index: 2;
         }
 
-        /* ✉️ TELA DE ABERTURA - CORRIGIDA */
+        /* ✉️ TELA DE ABERTURA - ISOLADA */
         #tela-selo {
             position: fixed;
             top: 0;
@@ -97,10 +97,10 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 99999; /* Fica à frente da moldura */
+            z-index: 999999; /* No topo de tudo */
             opacity: 1;
             visibility: visible;
-            transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+            transition: opacity 0.5s ease;
         }
 
         .texto-envelope-topo {
@@ -121,56 +121,33 @@
             font-weight: 300;
         }
 
-        /* Área do botão com prioridade total de clique */
+        /* Área de clique ampla e direta */
         .area-botao-lacre {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            z-index: 999999; /* Superior a qualquer outro elemento */
-        }
-
-        /* Selo de Cera Premium */
-        .selo-lacre-real {
+            width: 120px;
+            height: 120px;
             background: var(--cor-marrom);
             border: 2px solid #5a4230;
             border-radius: 50%;
-            width: 90px;
-            height: 90px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 8px 20px rgba(74, 53, 37, 0.3), inset 0 0 10px rgba(0,0,0,0.5);
-            transition: transform 0.2s ease;
-            pointer-events: none; /* Faz o clique focar direto na área-mãe */
+            box-shadow: 0 8px 20px rgba(74, 53, 37, 0.3);
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .area-botao-lacre:hover .selo-lacre-real {
-            transform: scale(1.05);
-        }
-
-        .area-botao-lacre:active .selo-lacre-real {
-            transform: scale(0.95);
-        }
-
-        .selo-lacre-real .texto-lacre {
+        .area-botao-lacre .texto-lacre {
             font-family: 'Cormorant Garamond', serif;
             color: #fbf9f6;
-            font-size: 1.6rem;
-            font-weight: 400;
-            line-height: 1;
+            font-size: 1.8rem;
         }
 
-        .selo-lacre-real span {
+        .area-botao-lacre span {
             font-size: 0.5rem;
             color: #dfd9ce;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 3px;
         }
 
         .clique-instrucao {
@@ -184,10 +161,7 @@
 
         /* Remove completamente a tela inicial */
         .esconder-selo {
-            opacity: 0 !important;
-            visibility: hidden !important;
-            pointer-events: none !important;
-            transform: scale(1.05);
+            display: none !important; /* Uso do display none para garantir que suma da árvore do site */
         }
 
         /* CONTEÚDO PRINCIPAL DO SITE */
@@ -498,7 +472,7 @@
 </head>
 <body>
 
-    <!-- ELEMENTO DE ÁUDIO -->
+    <!-- ELEMENTO DE ÁUDIO (DEIXADO DE LADO POR ENQUANTO) -->
     <audio id="musica-casamento" src="musica.mp3" loop></audio>
 
     <!-- PLAYER FLUTUANTE -->
@@ -506,17 +480,15 @@
         <i id="icone-player" class="fa-solid fa-music"></i>
     </div>
 
-    <!-- ✉️ TELA DE ABERTURA CORRIGIDA -->
+    <!-- ✉️ TELA DE ABERTURA PURA (Sem firulas de design ou tags internas complexas) -->
     <div id="tela-selo">
         <div class="texto-envelope-topo">Convidamos com a bênção de nossos pais</div>
         <div class="nomes-envelope">Tiago & Ricaely</div>
         
-        <!-- Área de Toque Totalmente Desimpedida -->
+        <!-- Botão direto e simplificado ao extremo -->
         <div class="area-botao-lacre" onclick="abrirOConviteDefinitivo()">
-            <div class="selo-lacre-real">
-                <div class="texto-lacre">T&R</div>
-                <span>Abrir</span>
-            </div>
+            <div class="texto-lacre">T&R</div>
+            <span>Abrir</span>
         </div>
         
         <div class="clique-instrucao">Toque no lacre para abrir</div>
@@ -610,4 +582,31 @@
                         <text><textPath href="#curva-local" startOffset="50%" text-anchor="middle">• como chegar no local • como chegar</textPath></text>
                     </svg>
                     <a href="https://maps.google.com/?q=Espaco+Eunaflora+Eunapolis" target="_blank" class="btn-circular-premium"><i class="fa-solid fa-map-location-dot"></i></a>
-          
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>Tiago & Ricaely • 22.11.2026 • Eunápolis - BA</p>
+        </footer>
+    </div>
+
+    <!-- JAVASCRIPT DE TESTE ISOLADO -->
+    <script>
+        const som = document.getElementById("musica-casamento");
+        const iconePlayer = document.getElementById("icone-player");
+
+        function abrirOConviteDefinitivo() {
+            // AÇÃO DIRETA SEM TOCAR MÚSICA PARA TESTAR O BLOQUEIO
+            document.getElementById("tela-selo").classList.add("esconder-selo");
+            document.getElementById("conteudo-site").classList.add("visivel");
+            
+            // Forçamos a checagem dos cards que surgem na tela
+            checarScroll();
+        }
+
+        function alternarMusica() {
+            if (som.paused) {
+                som.play();
+                ic
