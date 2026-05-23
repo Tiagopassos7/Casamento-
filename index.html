@@ -50,7 +50,7 @@
             z-index: 999;
         }
 
-        /* BRASÃO CLÁSSICO */
+        /* BRASÃO CLÁSSICO DO SITE */
         .brasao-casal {
             width: 110px;
             height: 110px;
@@ -84,7 +84,7 @@
             z-index: 2;
         }
 
-        /* ✉️ TELA DO ENVELOPE (FOTO REFS: Screenshot_20260523-120409.jpg) */
+        /* ✉️ TELA DE ABERTURA MODIFICADA (SEM AS DOBRAS QUE BLOQUEAVAM O CLIQUE) */
         #tela-selo {
             position: fixed;
             top: 0;
@@ -96,19 +96,19 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
+            z-index: 99999; /* Z-index altíssimo garantido */
             opacity: 1;
             visibility: visible;
-            transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s;
+            transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
         }
 
         .texto-envelope-topo {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.1rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: var(--cor-marrom);
             text-transform: uppercase;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .nomes-envelope {
@@ -116,107 +116,82 @@
             font-size: 2.8rem;
             font-style: italic;
             color: var(--cor-preto);
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             font-weight: 300;
         }
 
-        /* Corpo do Envelope */
-        .envelope-wrapper {
+        /* Área de toque limpa e sem barreiras CSS */
+        .area-botao-lacre {
             position: relative;
-            width: 320px;
-            height: 220px;
-            background-color: #e2dacd;
-            border-radius: 4px;
-            box-shadow: 0 15px 35px rgba(74, 53, 37, 0.15);
+            width: 200px;
+            height: 200px;
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
         }
 
-        /* Dobras simétricas */
-        .envelope-wrapper::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 0; height: 0;
-            border-left: 160px solid #ede6db;
-            border-right: 160px solid #ede6db;
-            border-bottom: 110px solid transparent;
-            border-top: 110px solid #dfd6c7;
-            z-index: 1;
-            border-radius: 4px 4px 0 0;
-        }
-
-        .envelope-wrapper::after {
-            content: "";
-            position: absolute;
-            bottom: 0; left: 0; width: 0; height: 0;
-            border-left: 160px solid transparent;
-            border-right: 160px solid transparent;
-            border-bottom: 110px solid #d5cbb9;
-            z-index: 2;
-            border-radius: 0 0 4px 4px;
-        }
-
-        /* Selo de Cera Clicável */
+        /* Selo de Cera Premium Estilizado */
         .selo-lacre-real {
-            position: absolute;
-            z-index: 20;
             background: var(--cor-marrom);
             border: 2px solid #5a4230;
             border-radius: 50%;
-            width: 74px;
-            height: 74px;
+            width: 90px;
+            height: 90px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3), inset 0 0 8px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 20px rgba(74, 53, 37, 0.3), inset 0 0 10px rgba(0,0,0,0.5);
             transition: transform 0.2s ease;
         }
 
-        .selo-lacre-real:active {
-            transform: scale(0.92);
+        .area-botao-lacre:hover .selo-lacre-real {
+            transform: scale(1.05);
+        }
+
+        .area-botao-lacre:active .selo-lacre-real {
+            transform: scale(0.95);
         }
 
         .selo-lacre-real .texto-lacre {
             font-family: 'Cormorant Garamond', serif;
             color: #fbf9f6;
-            font-size: 1.35rem;
+            font-size: 1.6rem;
             font-weight: 400;
             line-height: 1;
         }
 
         .selo-lacre-real span {
-            font-size: 0.45rem;
+            font-size: 0.5rem;
             color: #dfd9ce;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 2px;
+            margin-top: 3px;
         }
 
         .clique-instrucao {
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             color: #8A8276;
-            margin-top: 30px;
+            margin-top: 40px;
             font-weight: 500;
         }
 
-        /* Classe que faz sumir a tela inicial */
+        /* Classe que remove a tela inicial */
         .esconder-selo {
             opacity: 0 !important;
             visibility: hidden !important;
             pointer-events: none !important;
-            transform: scale(1.03);
+            transform: scale(1.05);
         }
 
         /* CONTEÚDO PRINCIPAL DO SITE */
         #conteudo-site {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 1.2s ease, transform 1.2s ease;
+            transition: opacity 1s ease, transform 1s ease;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -361,7 +336,7 @@
             transform: scale(1.02);
         }
 
-        /* Cards do Site */
+        /* Cards Gerais */
         .container {
             max-width: 580px;
             margin: 0 auto;
@@ -484,7 +459,7 @@
             transform: translateY(0);
         }
 
-        /* Player Flutuante Moderno */
+        /* Player Flutuante */
         #controle-musica {
             position: fixed;
             bottom: 30px;
@@ -520,7 +495,7 @@
 </head>
 <body>
 
-    <!-- ELEMENTO DE ÁUDIO -->
+    <!-- ELEMENTO DE ÁUDIO REATIVADO -->
     <audio id="musica-casamento" src="musica.mp3" loop></audio>
 
     <!-- PLAYER FLUTUANTE -->
@@ -528,19 +503,20 @@
         <i id="icone-player" class="fa-solid fa-music"></i>
     </div>
 
-    <!-- ✉️ TELA DO ENVELOPE DO CONVITE -->
+    <!-- ✉️ TELA DE ABERTURA COM ESTRUTURA DE CLIQUE LIMPA -->
     <div id="tela-selo">
         <div class="texto-envelope-topo">Convidamos com a bênção de nossos pais</div>
         <div class="nomes-envelope">Tiago & Ricaely</div>
         
-        <div class="envelope-wrapper">
-            <div class="selo-lacre-real" onclick="abrirOConvite()">
+        <!-- O clique agora engloba toda a área sem interferências visuais -->
+        <div class="area-botao-lacre" onclick="abrirOConviteDefinitivo()">
+            <div class="selo-lacre-real">
                 <div class="texto-lacre">T&R</div>
                 <span>Abrir</span>
             </div>
         </div>
         
-        <div class="clique-instrucao">Clique para abrir</div>
+        <div class="clique-instrucao">Toque no lacre para abrir</div>
     </div>
 
     <!-- CONTEÚDO PRINCIPAL DO SITE -->
@@ -626,4 +602,19 @@
                 </div>
 
                 <div class="botao-curvado-wrapper">
-                    <svg class="texto-curvado
+                    <svg class="texto-curvado-svg" viewBox="0 0 100 100">
+                        <path id="curva-local" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"/>
+                        <text><textPath href="#curva-local" startOffset="50%" text-anchor="middle">• como chegar no local • como chegar</textPath></text>
+                    </svg>
+                    <a href="https://maps.google.com/?q=Espaco+Eunaflora+Eunapolis" target="_blank" class="btn-circular-premium"><i class="fa-solid fa-map-location-dot"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>Tiago & Ricaely • 22.11.2026 • Eunápolis - BA</p>
+        </footer>
+    </div>
+
+    <!
