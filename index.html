@@ -97,7 +97,7 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s;
         }
 
         .texto-envelope-topo {
@@ -123,7 +123,7 @@
             position: relative;
             width: 320px;
             height: 220px;
-            background-color: #e2dacd; /* Cor do corpo do envelope */
+            background-color: #e2dacd;
             border-radius: 4px;
             box-shadow: 0 15px 35px rgba(74, 53, 37, 0.15);
             display: flex;
@@ -131,7 +131,7 @@
             align-items: center;
         }
 
-        /* Desenho das dobras do envelope usando bordas transparentes */
+        /* Desenho das dobras do envelope */
         .envelope-wrapper::before {
             content: "";
             position: absolute;
@@ -155,7 +155,7 @@
             border-radius: 0 0 4px 4px;
         }
 
-        /* O Selo Redondo de Cera (Fica por cima de tudo e aceita o clique perfeitamente) */
+        /* Selo Redondo Importante */
         .selo-lacre-real {
             position: absolute;
             z-index: 20;
@@ -170,12 +170,11 @@
             align-items: center;
             cursor: pointer;
             box-shadow: 0 6px 15px rgba(0,0,0,0.3), inset 0 0 8px rgba(0,0,0,0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.2s ease;
         }
 
-        .selo-lacre-real:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(74, 53, 37, 0.4);
+        .selo-lacre-real:active {
+            transform: scale(0.9);
         }
 
         .selo-lacre-real .texto-lacre {
@@ -205,17 +204,17 @@
 
         /* Classes de sumiço da tela inicial */
         .esconder-selo {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transform: scale(0.95);
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+            transform: scale(1.05);
         }
 
         /* CONTEÚDO DO SITE */
         #conteudo-site {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1.5s ease, transform 1.5s ease;
+            transform: translateY(20px);
+            transition: opacity 1.2s ease, transform 1.2s ease;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -396,7 +395,7 @@
             font-weight: 300;
         }
 
-        /* 🏷️ BOTÕES CURVADOS (ESTILO PRINT SCREEN) */
+        /* Botões Curvados */
         .botao-curvado-wrapper {
             position: relative;
             width: 120px;
@@ -483,7 +482,7 @@
             transform: translateY(0);
         }
 
-        /* Player Flutuante de Música */
+        /* Player Flutuante */
         #controle-musica {
             position: fixed;
             bottom: 30px;
@@ -519,7 +518,7 @@
 </head>
 <body>
 
-    <!-- ARQUIVO DE ÁUDIO -->
+    <!-- MÚSICA -->
     <audio id="musica-casamento" src="musica.mp3" loop></audio>
 
     <!-- PLAYER FLUTUANTE -->
@@ -527,13 +526,13 @@
         <i id="icone-player" class="fa-solid fa-music"></i>
     </div>
 
-    <!-- ✉️ TELA DO ENVELOPE DO CONVITE (ESTILO DA FOTO) -->
+    <!-- ✉️ TELA DO ENVELOPE (FOTO REFS: Screenshot_20260523-120409.jpg) -->
     <div id="tela-selo">
         <div class="texto-envelope-topo">Convidamos com a bênção de nossos pais</div>
         <div class="nomes-envelope">Tiago & Ricaely</div>
         
         <div class="envelope-wrapper">
-            <!-- Selo clicável e isolado para não ter erro -->
+            <!-- Botão com ação imediata e segura -->
             <div class="selo-lacre-real" onclick="abrirConviteFinal()">
                 <div class="texto-lacre">T&R</div>
                 <span>Abrir</span>
@@ -543,7 +542,7 @@
         <div class="clique-instrucao">Clique para abrir</div>
     </div>
 
-    <!-- 2. CONTEÚDO PRINCIPAL DO SITE -->
+    <!-- CONTEÚDO PRINCIPAL DO SITE -->
     <div id="conteudo-site">
         <header>
             <div class="detalhe-folhas-topo">
@@ -622,4 +621,8 @@
                 </div>
                 
                 <div class="mapa-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.579124483561!2d-39.5846152!3d-16.3703901!2m3!1f0!2f0!3f0!3m2!1i1024!2i1024!4f13.1!3m3!1m2!1s0x7369b76e5d8009b%3A0xcfd6f7902d5a3ef4!2sEspa%C3%A7o%20Eunaflora!5e0!3m2!1spt-BR!2sbr!4v17100000000
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.579124483561!2d-39.5846152!3d-16.3703901!2m3!1f0!2f0!3f0!3m2!1i1024!2i1024!4f13.1!3m3!1m2!1s0x7369b76e5d8009b%3A0xcfd6f7902d5a3ef4!2sEspa%C3%A7o%20Eunaflora!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+                <div class="botao-curvado-wrapper">
+                    <svg class="texto-cur
