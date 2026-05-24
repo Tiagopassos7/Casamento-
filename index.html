@@ -9,7 +9,6 @@
 <!-- FONTES -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <!-- ÍCONES -->
@@ -20,7 +19,6 @@
 /* =========================
 ROOT
 ========================= */
-
 :root{
     --bg:#f8f5f1;
     --white:#ffffff;
@@ -49,9 +47,8 @@ body{
 }
 
 /* =========================
-MOLDURA
+MOLDURA DO SITE
 ========================= */
-
 body::before{
     content:"";
     position:fixed;
@@ -62,188 +59,186 @@ body::before{
 }
 
 /* =========================
-INTRO
+INTRO (CAPA DO ENVELOPE)
 ========================= */
-
-#intro{
-    position:fixed;
-    inset:0;
-    background:
-    radial-gradient(circle at top,#fff,#efe6db);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:999999;
-    transition:1s;
-    padding:20px;
+#intro {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top, #ffffff, #efe6db);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    transition: cubic-bezier(0.4, 0, 0.2, 1) 0.8s;
+    padding: 20px;
 }
 
-.intro-hide{
-    opacity:0;
-    visibility:hidden;
+.intro-hide {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95);
+    pointer-events: none;
 }
 
-.envelope{
-    width:380px;
-    max-width:100%;
-    position:relative;
-    animation:fadeUp 1.2s ease;
+.envelope {
+    width: 100%;
+    max-width: 400px;
+    background: #fffdfb;
+    border: 1px solid #e2d5c7;
+    box-shadow: 
+        0 30px 70px rgba(74, 53, 37, 0.12),
+        inset 0 0 40px rgba(176, 138, 87, 0.03);
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex;
+    flex-direction: column;
 }
 
-@keyframes fadeUp{
-    from{
-        transform:translateY(30px);
-        opacity:0;
+@keyframes fadeUp {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
     }
-    to{
-        transform:translateY(0);
-        opacity:1;
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 
-/* ABA */
-
-.envelope-top{
-    width:100%;
-    height:160px;
-    background:linear-gradient(to bottom,#eadfce,#dfcfbb);
-    clip-path:polygon(0 0,50% 100%,100% 0);
-    position:absolute;
-    top:0;
-    left:0;
-    z-index:4;
-    border-top:1px solid #d4c1a9;
+/* ABA DO ENVELOPE */
+.envelope-top {
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to bottom, #eadfce, #dfcfbb);
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    border-bottom: 1px solid #d4c1a9;
+    flex-shrink: 0;
+    z-index: 4;
 }
 
-/* CORPO */
-
-.envelope-body{
-    background:#fffdfb;
-    border:1px solid #e2d5c7;
-    padding:170px 35px 60px;
-    box-shadow:
-    0 25px 60px rgba(0,0,0,.08),
-    inset 0 0 40px rgba(176,138,87,.05);
-    position:relative;
-    overflow:hidden;
+/* CORPO DO ENVELOPE */
+.envelope-body {
+    padding: 30px 30px 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* TEXTURA */
-
-.envelope-body::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-    repeating-linear-gradient(
-    45deg,
-    rgba(176,138,87,.015),
-    rgba(176,138,87,.015) 2px,
-    transparent 2px,
-    transparent 6px
+/* TEXTURA INTERNA */
+.envelope-body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(176, 138, 87, 0.015),
+        rgba(176, 138, 87, 0.015) 2px,
+        transparent 2px,
+        transparent 6px
     );
-    pointer-events:none;
+    pointer-events: none;
 }
 
-/* BRASÃO */
-
-.logo{
-    width:135px;
-    height:135px;
-    margin:0 auto 25px;
-    border-radius:50%;
-    position:relative;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border:1px solid var(--gold);
-    background:#fff;
+/* BRASÃO (Efeito Lacre de Cera) */
+.logo {
+    width: 110px;
+    height: 110px;
+    margin: -60px auto 25px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--gold);
+    background: #fff;
+    z-index: 5;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.logo::before{
-    content:"";
-    position:absolute;
-    inset:7px;
-    border-radius:50%;
-    border:1px dashed var(--gold);
+.logo::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border-radius: 50%;
+    border: 1px dashed var(--gold);
 }
 
-.logo span{
-    font-family:'Cormorant Garamond',serif;
-    font-size:3rem;
-    color:var(--brown);
-    position:relative;
-    z-index:2;
-    letter-spacing:2px;
+.logo span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    color: var(--brown);
+    position: relative;
+    z-index: 2;
+    letter-spacing: 1px;
 }
 
-.intro-mini{
-    text-align:center;
-    letter-spacing:5px;
-    text-transform:uppercase;
-    font-size:.68rem;
-    color:var(--gold);
-    margin-bottom:18px;
+.intro-mini {
+    text-align: center;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    color: var(--gold);
+    margin-bottom: 12px;
 }
 
-.intro-title{
-    font-family:'Cormorant Garamond',serif;
-    font-size:3.2rem;
-    text-align:center;
-    color:var(--black);
-    font-weight:300;
-    margin-bottom:18px;
+.intro-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    text-align: center;
+    color: var(--black);
+    font-weight: 300;
+    margin-bottom: 15px;
+    line-height: 1.1;
 }
 
-.intro-text{
-    text-align:center;
-    line-height:2;
-    font-size:.95rem;
-    margin-bottom:35px;
+.intro-text {
+    text-align: center;
+    line-height: 1.8;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
 }
 
-.btn-open{
-    width:115px;
-    height:115px;
-    border-radius:50%;
-    border:none;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin:auto;
-    background:
-    linear-gradient(145deg,var(--brown),#2b1c14);
-    color:#fff;
-    cursor:pointer;
-    transition:.4s;
-    box-shadow:
-    0 10px 35px rgba(74,53,37,.35);
-    font-size:.85rem;
-    letter-spacing:2px;
-    text-transform:uppercase;
+.btn-open {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    background: linear-gradient(145deg, var(--brown), #2b1c14);
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 25px rgba(74, 53, 37, 0.3);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-.btn-open:hover{
-    transform:scale(1.05);
+.btn-open:hover {
+    transform: scale(1.08);
 }
 
-.intro-tip{
-    text-align:center;
-    margin-top:30px;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    font-size:.65rem;
-    color:#9b8a78;
+.intro-tip {
+    text-align: center;
+    margin-top: 25px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.6rem;
+    color: #9b8a78;
 }
 
 /* =========================
-SITE
+SITE INTERNO
 ========================= */
-
 #site{
     opacity:0;
     visibility:hidden;
-    transition:1s;
+    transition:1s ease-in-out;
 }
 
 .site-show{
@@ -254,7 +249,6 @@ SITE
 /* =========================
 HEADER
 ========================= */
-
 header{
     padding:120px 20px 70px;
     text-align:center;
@@ -315,7 +309,6 @@ h1{
 /* =========================
 CONTADOR
 ========================= */
-
 #contador{
     margin-top:50px;
     display:flex;
@@ -349,7 +342,6 @@ CONTADOR
 /* =========================
 GALERIA
 ========================= */
-
 .galeria{
     width:min(1250px,92%);
     margin:80px auto;
@@ -375,7 +367,6 @@ GALERIA
 /* =========================
 CONTAINER
 ========================= */
-
 .container{
     width:min(760px,92%);
     margin:auto;
@@ -384,7 +375,6 @@ CONTAINER
 /* =========================
 CARDS
 ========================= */
-
 .card{
     background:#fff;
     border:1px solid var(--line);
@@ -409,7 +399,6 @@ CARDS
 }
 
 /* BOTÃO REDONDO */
-
 .btn{
     width:70px;
     height:70px;
@@ -425,6 +414,7 @@ CARDS
     transition:.4s;
     box-shadow:0 8px 25px rgba(0,0,0,.08);
     font-size:1.2rem;
+    cursor:pointer;
 }
 
 .btn:hover{
@@ -436,7 +426,6 @@ CARDS
 /* =========================
 TIMELINE
 ========================= */
-
 .timeline{
     margin-top:80px;
 }
@@ -475,9 +464,91 @@ TIMELINE
 }
 
 /* =========================
+MODAL PRESENTES
+========================= */
+.modal{
+    position: fixed;
+    inset: 0;
+    background: rgba(74, 53, 37, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 1000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s ease;
+    padding: 20px;
+}
+
+.modal.active{
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content{
+    background: #fff;
+    border: 1px solid var(--line);
+    padding: 50px 30px;
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    animation: modalUp 0.5s ease;
+}
+
+@keyframes modalUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-modal{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: var(--text);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-modal:hover{
+    color: var(--brown);
+}
+
+.pix-box{
+    background: var(--bg);
+    border: 1px dashed var(--gold);
+    padding: 15px;
+    font-size: 0.9rem;
+    word-break: break-all;
+    margin: 20px 0;
+    color: var(--black);
+    font-weight: 500;
+}
+
+.btn-copy{
+    background: var(--brown);
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-copy:hover{
+    background: var(--gold);
+}
+
+/* =========================
 FLOATERS
 ========================= */
-
 .whatsapp{
     position:fixed;
     bottom:25px;
@@ -515,7 +586,6 @@ FLOATERS
 /* =========================
 FOOTER
 ========================= */
-
 footer{
     margin-top:90px;
     padding:80px 20px;
@@ -529,25 +599,11 @@ footer{
 /* =========================
 RESPONSIVO
 ========================= */
-
 @media(max-width:768px){
-
-    h1{
-        font-size:3rem;
-    }
-
-    .intro-title{
-        font-size:2.6rem;
-    }
-
-    .galeria img{
-        height:280px;
-    }
-
-    .card{
-        padding:55px 25px;
-    }
-
+    h1{ font-size:3rem; }
+    .intro-title{ font-size:2.6rem; }
+    .galeria img{ height:280px; }
+    .card{ padding:55px 25px; }
 }
 
 </style>
@@ -556,353 +612,233 @@ RESPONSIVO
 <body>
 
 <!-- ÁUDIO -->
-
 <audio id="audio" loop>
 <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
-<!-- WHATS -->
-
-<a href="https://wa.me/5527995835084"
-target="_blank"
-class="whatsapp">
-
+<!-- FLOAT WHATSAPP -->
+<a href="https://wa.me/5527995835084" target="_blank" class="whatsapp">
 <i class="fa-brands fa-whatsapp"></i>
-
 </a>
 
-<!-- PLAYER -->
-
+<!-- FLOAT PLAYER MÚSICA -->
 <button class="music" onclick="toggleMusic()">
-
 <i id="musicIcon" class="fa-solid fa-music"></i>
-
 </button>
 
-<!-- INTRO -->
-
+<!-- INTRO (CAPA ENVELOPE) -->
 <section id="intro">
-
 <div class="envelope">
-
 <div class="envelope-top"></div>
-
 <div class="envelope-body">
-
 <div class="logo">
 <span>T&R</span>
 </div>
-
-<div class="intro-mini">
-Convidamos para nosso casamento
+<div class="intro-mini">Convidamos para nosso casamento</div>
+<div class="intro-title">Tiago & Ricaely</div>
+<div class="intro-text">Com alegria em nossos corações, queremos compartilhar o início do nosso felizes para sempre ao lado das pessoas mais importantes da nossa vida.</div>
+<button class="btn-open" onclick="abrirSite()">Abrir</button>
+<div class="intro-tip">toque para abrir o convite</div>
 </div>
-
-<div class="intro-title">
-Tiago & Ricaely
 </div>
-
-<div class="intro-text">
-Com alegria em nossos corações, queremos compartilhar o início do nosso felizes para sempre ao lado das pessoas mais importantes da nossa vida.
-</div>
-
-<button class="btn-open" onclick="abrirSite()">
-Abrir
-</button>
-
-<div class="intro-tip">
-toque para abrir o convite
-</div>
-
-</div>
-
-</div>
-
 </section>
 
-<!-- SITE -->
-
+<!-- SITE PRINCIPAL -->
 <div id="site">
-
 <header>
-
 <div class="hero-logo">
 <span>T&R</span>
 </div>
-
 <h1>Tiago & Ricaely</h1>
-
-<div class="data">
-22 • Novembro • 2026
-</div>
-
-<div class="frase">
-“O amor é paciente, o amor é bondoso. Nossa maior felicidade será viver esse momento ao lado das pessoas que amamos.”
-</div>
+<div class="data">22 • Novembro • 2026</div>
+<div class="frase">“O amor é paciente, o amor é bondoso. Nossa maior felicidade será viver esse momento ao lado das pessoas que amamos.”</div>
 
 <div id="contador">
-
-<div class="box">
-<div id="dias" class="numero">00</div>
-<div class="label">Dias</div>
+<div class="box"><div id="dias" class="numero">00</div><div class="label">Dias</div></div>
+<div class="box"><div id="horas" class="numero">00</div><div class="label">Horas</div></div>
+<div class="box"><div id="minutos" class="numero">00</div><div class="label">Min</div></div>
 </div>
-
-<div class="box">
-<div id="horas" class="numero">00</div>
-<div class="label">Horas</div>
-</div>
-
-<div class="box">
-<div id="minutos" class="numero">00</div>
-<div class="label">Min</div>
-</div>
-
-</div>
-
 </header>
 
-<!-- GALERIA -->
-
+<!-- GALERIA DE FOTOS -->
 <section class="galeria">
-
-<img src="casal1.jpg">
-<img src="casal2.jpg">
-<img src="casal3.jpg">
-<img src="casal4.jpg">
-<img src="casal5.jpg">
-<img src="casal6.jpg">
-<img src="casal7.jpg">
-<img src="casal8.jpg">
-<img src="casal9.jpg">
-<img src="casal10.jpg">
-<img src="casal11.jpg">
-<img src="casal12.jpg">
-
+<img src="casal1.jpg" alt="Casal 1">
+<img src="casal2.jpg" alt="Casal 2">
+<img src="casal3.jpg" alt="Casal 3">
+<img src="casal4.jpg" alt="Casal 4">
+<img src="casal5.jpg" alt="Casal 5">
+<img src="casal6.jpg" alt="Casal 6">
+<img src="casal7.jpg" alt="Casal 7">
+<img src="casal8.jpg" alt="Casal 8">
+<img src="casal9.jpg" alt="Casal 9">
+<img src="casal10.jpg" alt="Casal 10">
+<img src="casal11.jpg" alt="Casal 11">
+<img src="casal12.jpg" alt="Casal 12">
 </section>
 
-<!-- CONTAINER -->
-
+<!-- SEÇÕES DE INFORMAÇÕES -->
 <section class="container">
 
-<!-- PRESENÇA -->
-
+<!-- CONFIRMAÇÃO DE PRESENÇA -->
 <div class="card">
-
 <h2>Confirmação de Presença</h2>
-
-<p>
-Sua presença tornará esse momento ainda mais especial para nós. Para melhor organização do evento, pedimos a gentileza de confirmar sua presença até o dia 01/10/2026.
-</p>
-
-<a href="https://surveymars.com/q/TrQU0MZoh"
-target="_blank"
-class="btn">
-
+<p>Sua presença tornará esse momento ainda mais especial para nós. Para melhor organização do evento, pedimos a gentileza de confirmar sua presença até o dia 01/10/2026.</p>
+<a href="https://surveymars.com/q/TrQU0MZoh" target="_blank" class="btn">
 <i class="fa-solid fa-user-check"></i>
-
 </a>
-
 </div>
 
-<!-- PRESENTES -->
-
+<!-- LISTA DE PRESENTES -->
 <div class="card">
-
 <h2>Presentes</h2>
-
-<p>
-A presença de vocês já é o nosso maior presente. Ainda assim, para familiares e amigos que desejarem nos abençoar com carinho, deixamos uma opção prática e discreta preparada com amor.
-</p>
-
-<a href="#"
-class="btn">
-
+<p>A presença de vocês já é o nosso maior presente. Ainda assim, para familiares e amigos que desejarem nos abençoar com carinho, deixamos uma opção prática e discreta preparada com amor.</p>
+<button class="btn" onclick="toggleModal(true)">
 <i class="fa-solid fa-gift"></i>
-
-</a>
-
+</button>
 </div>
 
-<!-- LOCAL -->
-
+<!-- LOCAL DO EVENTO -->
 <div class="card">
-
 <h2>Local do Evento</h2>
-
-<p>
-Nossa cerimônia acontecerá às 16h no Espaço Eunaflora, em Eunápolis - BA. Esperamos vocês para celebrar esse dia inesquecível conosco.
-</p>
-
-<a href="https://maps.google.com/?q=Espaco+Eunaflora+Eunapolis"
-target="_blank"
-class="btn">
-
+<p>Nossa cerimônia acontecerá às 16h no Espaço Eunaflora, em Eunápolis - BA. Esperamos vocês para celebrar esse dia inesquecível conosco.</p>
+<a href="https://maps.google.com/?q=Espaco+Eunaflora+Eunapolis" target="_blank" class="btn">
 <i class="fa-solid fa-location-dot"></i>
-
 </a>
-
 </div>
 
-<!-- WHATS -->
-
+<!-- CONTATO DOS NOIVOS -->
 <div class="card">
-
 <h2>Falar com os Noivos</h2>
-
-<p>
-Caso tenha qualquer dúvida sobre o evento, hospedagem, localização ou confirmação, entre em contato conosco.
-</p>
-
-<a href="https://wa.me/5527995835084"
-target="_blank"
-class="btn">
-
+<p>Caso tenha qualquer dúvida sobre o evento, hospedagem, localização ou confirmação, entre em contato conosco.</p>
+<a href="https://wa.me/5527995835084" target="_blank" class="btn">
 <i class="fa-brands fa-whatsapp"></i>
-
 </a>
-
 </div>
 
-<!-- TIMELINE -->
-
+<!-- TIMELINE / HISTÓRIA -->
 <div class="card timeline">
-
 <h2>Nossa História</h2>
-
-<div class="timeline-item">
-<h3>Primeira Conversa</h3>
-<span>18 • Novembro • 2024</span>
-</div>
-
-<div class="timeline-item">
-<h3>Pedido de Namoro</h3>
-<span>18 • Janeiro • 2025</span>
-</div>
-
-<div class="timeline-item">
-<h3>Noivado</h3>
-<span>18 • Janeiro • 2026</span>
-</div>
-
-<div class="timeline-item">
-<h3>Casamento Civil</h3>
-<span>18 • Novembro • 2026</span>
-</div>
-
-<div class="timeline-item">
-<h3>Nosso Casamento</h3>
-<span>22 • Novembro • 2026</span>
-</div>
-
+<div class="timeline-item"><h3>Primeira Conversa</h3><span>18 • Novembro • 2024</span></div>
+<div class="timeline-item"><h3>Pedido de Namoro</h3><span>18 • Janeiro • 2025</span></div>
+<div class="timeline-item"><h3>Noivado</h3><span>18 • Janeiro • 2026</span></div>
+<div class="timeline-item"><h3>Casamento Civil</h3><span>18 • Novembro • 2026</span></div>
+<div class="timeline-item"><h3>Nosso Casamento</h3><span>22 • Novembro • 2026</span></div>
 </div>
 
 </section>
 
+<!-- MODAL POPUP DE PRESENTES (PIX) -->
+<div id="presentesModal" class="modal" onclick="fecharModalFora(event)">
+<div class="modal-content">
+<button class="close-modal" onclick="toggleModal(false)"><i class="fa-solid fa-xmark"></i></button>
+<h2 style="font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--black); margin-bottom:15px;">Presente em PIX</h2>
+<p style="font-size:0.9rem; line-height:1.6;">Para nos abençoar, você pode realizar uma transferência de qualquer valor utilizando a chave PIX abaixo:</p>
+<div class="pix-box" id="pixChave">5527995835084</div>
+<button class="btn-copy" onclick="copiarPix()">Copiar Chave PIX</button>
+</div>
+</div>
+
+<!-- RODAPÉ -->
 <footer>
-
 TIAGO & RICAELY • 22.11.2026 • EUNÁPOLIS - BA
-
 </footer>
-
 </div>
 
 <script>
 
-/* ELEMENTOS */
-
+/* CONFIGURAÇÕES E ELEMENTOS DE INTERFACE */
 const intro = document.getElementById('intro');
 const site = document.getElementById('site');
-
 const audio = document.getElementById('audio');
 const musicIcon = document.getElementById('musicIcon');
+const presentesModal = document.getElementById('presentesModal');
 
 let tocando = false;
 
-/* ABRIR SITE */
-
+/* CONTROLE DE ABERTURA DA CAPA */
 function abrirSite(){
-
     intro.classList.add('intro-hide');
-
     site.classList.add('site-show');
+    window.scrollTo(0,0);
 
     audio.volume = 0.5;
-
     audio.play()
     .then(() => {
-
         tocando = true;
-
         musicIcon.className = 'fa-solid fa-pause';
-
     })
     .catch(() => {
-
         tocando = false;
-
         musicIcon.className = 'fa-solid fa-music';
-
     });
-
 }
 
-/* TOGGLE MÚSICA */
-
+/* CONTROLE DO PLAYER DE MÚSICA */
 function toggleMusic(){
-
     if(tocando){
-
         audio.pause();
-
         tocando = false;
-
         musicIcon.className = 'fa-solid fa-music';
-
     }else{
-
         audio.play();
-
         tocando = true;
-
         musicIcon.className = 'fa-solid fa-pause';
-
     }
-
 }
 
-/* CONTADOR */
+/* SISTEMA DO MODAL PIX */
+function toggleModal(abrir) {
+    if(abrir) {
+        presentesModal.classList.add('active');
+    } else {
+        presentesModal.classList.remove('active');
+    }
+}
 
-const dataCasamento =
-new Date("Nov 22, 2026 16:00:00").getTime();
+function fecharModalFora(e) {
+    if(e.target === presentesModal) {
+        toggleModal(false);
+    }
+}
+
+function copiarPix() {
+    const chave = document.getElementById('pixChave').innerText;
+    navigator.clipboard.writeText(chave).then(() => {
+        alert('Chave PIX copiada com sucesso!');
+    }).catch(() => {
+        alert('Erro ao copiar automaticamente. Chave: ' + chave);
+    });
+}
+
+/* CRONÔMETRO REGRESSIVO INTELIGENTE */
+const dataCasamento = new Date("Nov 22, 2026 16:00:00").getTime();
+
+function formatarNumero(num) {
+    return num < 10 && num >= 0 ? '0' + num : num;
+}
 
 function atualizarContador(){
-
     const agora = new Date().getTime();
-
     const distancia = dataCasamento - agora;
 
-    const dias = Math.floor(
-    distancia / (1000 * 60 * 60 * 24)
-    );
+    if (distancia < 0) {
+        document.getElementById('dias').innerHTML = "00";
+        document.getElementById('horas').innerHTML = "00";
+        document.getElementById('minutos').innerHTML = "00";
+        return;
+    }
 
-    const horas = Math.floor(
-    (distancia % (1000 * 60 * 60 * 24))
-    / (1000 * 60 * 60)
-    );
+    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
 
-    const minutos = Math.floor(
-    (distancia % (1000 * 60 * 60))
-    / (1000 * 60)
-    );
-
-    document.getElementById('dias').innerHTML = dias;
-    document.getElementById('horas').innerHTML = horas;
-    document.getElementById('minutos').innerHTML = minutos;
-
+    document.getElementById('dias').innerHTML = formatarNumero(dias);
+    document.getElementById('horas').innerHTML = formatarNumero(horas);
+    document.getElementById('minutos').innerHTML = formatarNumero(minutos);
 }
 
 atualizarContador();
-
-setInterval(atualizarContador,1000);
+setInterval(atualizarContador, 1000);
 
 </script>
 
