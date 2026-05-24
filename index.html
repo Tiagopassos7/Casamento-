@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tiago & Ricaely | Casamento</title>
+<title>Tiago & Ricaely</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 
 :root{
-    --bg:#F7F3ED;
-    --white:#FFFFFF;
-    --gold:#B89B72;
-    --gold-soft:#D8C4A8;
-    --brown:#4A3525;
-    --text:#5E5E5E;
-    --border:#E8DED1;
-    --black:#1A1A1A;
+    --fundo:#f8f5f0;
+    --card:#ffffff;
+    --marrom:#4A3525;
+    --texto:#4f4f4f;
+    --borda:#ddd3c4;
+    --dourado:#b89b72;
 }
 
 *{
@@ -37,405 +35,329 @@ html{
 }
 
 body{
-    font-family:'Montserrat', sans-serif;
-    background:var(--bg);
-    color:var(--text);
+    background:var(--fundo);
+    font-family:'Montserrat',sans-serif;
+    color:var(--texto);
     overflow-x:hidden;
 }
-
-/* MOLDURA */
 
 body::before{
     content:"";
     position:fixed;
-    top:15px;
-    left:15px;
-    right:15px;
-    bottom:15px;
-    border:1px solid var(--border);
+    inset:15px;
+    border:1px solid var(--borda);
     pointer-events:none;
     z-index:999;
 }
 
-/* ========================= */
-/* ABERTURA */
-/* ========================= */
+/* ===== TELA ENVELOPE ===== */
 
-#tela-abertura{
+#tela-selo{
     position:fixed;
     inset:0;
-    background:var(--bg);
+    background:linear-gradient(to bottom,#f8f5f0,#efe7db);
     z-index:99999;
+
     display:flex;
     align-items:center;
     justify-content:center;
     flex-direction:column;
+
     transition:1s;
 }
 
 .envelope{
-    width:340px;
+    width:320px;
     height:220px;
+    background:#efe5d8;
     position:relative;
-    cursor:pointer;
-}
-
-.envelope-base{
-    width:100%;
-    height:100%;
-    background:#EFE7DC;
-    position:absolute;
-    bottom:0;
-    border:1px solid #D8C8B5;
+    border:1px solid #d8c9b4;
+    box-shadow:0 20px 40px rgba(0,0,0,0.12);
     overflow:hidden;
 }
 
-.envelope-tampa{
+.envelope::before{
+    content:"";
     position:absolute;
-    width:100%;
-    height:100%;
-    background:#E8DDD0;
-    clip-path:polygon(0 0,50% 55%,100% 0);
     top:0;
     left:0;
-    z-index:3;
-    transition:1s;
+    width:100%;
+    height:100%;
+    background:
+    linear-gradient(135deg,transparent 50%,#e2d3be 50%);
 }
 
-.convite{
-    width:88%;
-    height:180px;
-    background:white;
+.envelope::after{
+    content:"";
     position:absolute;
+    top:0;
+    right:0;
+    width:100%;
+    height:100%;
+    background:
+    linear-gradient(-135deg,transparent 50%,#e8dac7 50%);
+}
+
+.convite-topo{
+    position:absolute;
+    width:85%;
+    height:85%;
+    background:white;
+    top:15px;
     left:50%;
     transform:translateX(-50%);
-    bottom:15px;
     z-index:2;
+
     display:flex;
     align-items:center;
     justify-content:center;
     flex-direction:column;
-    transition:1s;
-    border:1px solid #EFE7DC;
 }
 
-.logo-casal{
-    width:110px;
-    height:110px;
-    border:1px solid var(--gold);
+.brasao{
+    width:95px;
+    height:95px;
+    border:1px solid var(--marrom);
     border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
     position:relative;
-    margin-bottom:15px;
+    margin-bottom:20px;
 }
 
-.logo-casal::before{
+.brasao::after{
     content:"";
     position:absolute;
     inset:5px;
-    border:1px dashed var(--gold);
+    border:1px dashed var(--marrom);
     border-radius:50%;
 }
 
-.logo-casal span{
-    font-family:'Cormorant Garamond', serif;
-    font-size:2.8rem;
-    color:var(--brown);
+.brasao-texto{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.5rem;
+    color:var(--marrom);
     z-index:2;
-    letter-spacing:2px;
+    font-weight:500;
 }
 
-.convite h1{
-    font-family:'Cormorant Garamond', serif;
+.brasao-texto span{
+    font-size:1.4rem;
+    opacity:0.8;
+    margin:0 3px;
+}
+
+.nomes-envelope{
+    font-family:'Cormorant Garamond',serif;
     font-size:2rem;
-    font-weight:400;
-    color:var(--black);
+    color:#222;
+    font-style:italic;
 }
 
-.lacre{
-    width:90px;
-    height:90px;
+.botao-lacre{
+    width:110px;
+    height:110px;
+    background:var(--marrom);
     border-radius:50%;
-    background:var(--brown);
-    position:absolute;
-    z-index:4;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
+    margin-top:35px;
+
     display:flex;
     align-items:center;
     justify-content:center;
     flex-direction:column;
+
     color:white;
-    border:2px solid #705440;
-    box-shadow:0 10px 20px rgba(0,0,0,.15);
+    cursor:pointer;
+
+    border:4px solid #5b4332;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+
+    transition:.4s;
 }
 
-.lacre strong{
-    font-family:'Cormorant Garamond', serif;
-    font-size:1.8rem;
+.botao-lacre:hover{
+    transform:scale(1.05);
 }
 
-.lacre span{
-    font-size:.5rem;
-    letter-spacing:2px;
+.botao-lacre h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2rem;
+    font-weight:500;
+}
+
+.botao-lacre p{
+    font-size:.6rem;
+    letter-spacing:3px;
     text-transform:uppercase;
 }
 
-.texto-abrir{
-    margin-top:40px;
-    letter-spacing:5px;
-    text-transform:uppercase;
-    font-size:.7rem;
-    color:#8C8176;
-}
+/* ===== SITE ===== */
 
-#tela-abertura.abrir .envelope-tampa{
-    transform:rotateX(180deg);
-    transform-origin:top;
-}
-
-#tela-abertura.abrir .convite{
-    transform:translateX(-50%) translateY(-100px);
-}
-
-#tela-abertura.sumir{
+#conteudo-site{
     opacity:0;
-    visibility:hidden;
-}
-
-/* ========================= */
-/* CONTEÚDO */
-/* ========================= */
-
-#site{
-    opacity:0;
-    transform:translateY(30px);
+    transform:translateY(20px);
     transition:1s;
 }
 
-#site.visivel{
+#conteudo-site.visivel{
     opacity:1;
     transform:translateY(0);
 }
 
 header{
-    padding:120px 20px 60px;
     text-align:center;
+    padding:100px 20px 50px;
 }
 
-.topo-logo{
-    margin-bottom:30px;
+.topo-icone{
+    color:var(--dourado);
+    font-size:1.5rem;
+    margin-bottom:20px;
 }
 
-.topo-logo .logo-casal{
+.logo-principal{
+    margin-bottom:25px;
+}
+
+.logo-principal .brasao{
     margin:auto;
 }
 
-header h1{
-    font-family:'Cormorant Garamond', serif;
+h1{
+    font-family:'Cormorant Garamond',serif;
     font-size:4rem;
     font-weight:300;
-    color:var(--black);
+    color:#222;
+    letter-spacing:3px;
 }
 
-header .data{
+.data{
     margin-top:10px;
-    letter-spacing:6px;
+    color:var(--marrom);
     text-transform:uppercase;
-    font-size:.85rem;
-    color:var(--gold);
+    letter-spacing:5px;
+    font-size:.9rem;
+    font-weight:600;
 }
 
 .frase{
-    max-width:700px;
+    max-width:650px;
     margin:40px auto;
-    font-family:'Cormorant Garamond', serif;
-    font-size:1.5rem;
-    line-height:1.8;
+    line-height:2;
+    font-size:1.2rem;
     font-style:italic;
-    color:#555;
+    font-family:'Cormorant Garamond',serif;
+    padding:0 20px;
 }
 
-/* CONTADOR */
+/* ===== CONTADOR ===== */
 
 #contador{
     display:flex;
     justify-content:center;
     gap:15px;
-    margin-top:40px;
     flex-wrap:wrap;
+    margin-top:30px;
 }
 
 .box-tempo{
     background:white;
-    border:1px solid var(--border);
-    min-width:100px;
+    border:1px solid var(--borda);
     padding:20px;
+    min-width:100px;
 }
 
 .numero{
-    font-family:'Cormorant Garamond', serif;
-    font-size:2.5rem;
-    color:var(--black);
+    font-size:2.3rem;
+    font-family:'Cormorant Garamond',serif;
+    color:#222;
 }
 
 .rotulo{
     margin-top:5px;
     font-size:.7rem;
-    letter-spacing:3px;
     text-transform:uppercase;
-    color:var(--gold);
+    letter-spacing:2px;
+    color:var(--marrom);
 }
 
-/* TITULOS */
+/* ===== GALERIA ===== */
 
-.titulo{
-    text-align:center;
-    margin-bottom:50px;
-}
+.galeria-container{
+    max-width:1100px;
+    margin:80px auto;
+    padding:0 20px;
 
-.titulo span{
-    letter-spacing:4px;
-    text-transform:uppercase;
-    font-size:.75rem;
-    color:var(--gold);
-}
-
-.titulo h2{
-    font-family:'Cormorant Garamond', serif;
-    font-size:3rem;
-    color:var(--black);
-    margin-top:10px;
-    font-weight:400;
-}
-
-/* GALERIA */
-
-.galeria{
-    max-width:1200px;
-    margin:0 auto;
-    padding:80px 20px;
-}
-
-.grid-galeria{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:18px;
 }
 
-.foto{
-    height:320px;
+.foto-item{
+    background:white;
+    padding:8px;
+    border:1px solid var(--borda);
+    position:relative;
     overflow:hidden;
+    min-height:280px;
 }
 
-.foto.grande{
+.foto-item.grande{
     grid-column:span 2;
+    min-height:350px;
 }
 
-.foto img{
+.foto-item::after{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border:1px solid rgba(255,255,255,0.4);
+    pointer-events:none;
+}
+
+.foto-item img{
     width:100%;
     height:100%;
     object-fit:cover;
-    transition:.8s;
+    transition:.7s;
+    filter:grayscale(5%);
 }
 
-.foto:hover img{
-    transform:scale(1.05);
+.foto-item:hover img{
+    transform:scale(1.03);
+    filter:none;
 }
 
-/* TIMELINE */
+/* ===== CARDS ===== */
 
-.timeline-section{
-    padding:80px 20px;
-    max-width:1000px;
+.container{
+    max-width:700px;
     margin:auto;
-}
-
-.timeline{
-    position:relative;
-    margin-top:50px;
-}
-
-.timeline::before{
-    content:"";
-    position:absolute;
-    width:1px;
-    background:var(--gold-soft);
-    top:0;
-    bottom:0;
-    left:50%;
-}
-
-.timeline-item{
-    width:50%;
-    padding:20px;
-    position:relative;
-}
-
-.timeline-item:nth-child(odd){
-    left:0;
-    text-align:right;
-}
-
-.timeline-item:nth-child(even){
-    left:50%;
-}
-
-.timeline-card{
-    background:white;
-    border:1px solid var(--border);
-    padding:30px;
-}
-
-.timeline-card i{
-    color:var(--gold);
-    font-size:1.4rem;
-    margin-bottom:15px;
-}
-
-.timeline-card h3{
-    font-family:'Cormorant Garamond', serif;
-    font-size:2rem;
-    margin-bottom:10px;
-    color:var(--black);
-}
-
-.timeline-card p{
-    line-height:1.8;
-}
-
-/* CARDS */
-
-.cards{
-    max-width:1100px;
-    margin:auto;
-    padding:80px 20px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
+    padding:0 20px;
 }
 
 .card{
     background:white;
-    border:1px solid var(--border);
-    padding:50px 35px;
+    padding:55px 35px;
+    margin:40px 0;
+    border:1px solid var(--borda);
     text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.04);
 }
 
 .card i{
     font-size:2rem;
-    color:var(--gold);
+    color:var(--dourado);
     margin-bottom:25px;
 }
 
-.card h3{
-    font-family:'Cormorant Garamond', serif;
+.card h2{
+    font-family:'Cormorant Garamond',serif;
     font-size:2rem;
-    color:var(--black);
     margin-bottom:20px;
+    color:#222;
 }
 
 .card p{
@@ -443,143 +365,118 @@ header .data{
     margin-bottom:30px;
 }
 
-.btn{
+.botao{
     display:inline-block;
-    padding:15px 28px;
-    border:1px solid var(--gold);
+    padding:15px 30px;
+    border:1px solid var(--marrom);
     text-decoration:none;
-    color:var(--brown);
-    font-size:.75rem;
-    letter-spacing:3px;
+    color:var(--marrom);
     text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:.8rem;
     transition:.4s;
 }
 
-.btn:hover{
-    background:var(--gold);
+.botao:hover{
+    background:var(--marrom);
     color:white;
 }
 
-/* MENSAGEM */
+/* ===== TIMELINE ===== */
 
-.mensagem{
+.timeline-section{
     max-width:900px;
-    margin:0 auto;
-    padding:80px 20px;
+    margin:120px auto;
+    padding:0 20px;
+}
+
+.titulo-secao{
     text-align:center;
+    font-family:'Cormorant Garamond',serif;
+    font-size:3rem;
+    margin-bottom:70px;
+    color:#222;
 }
 
-.mensagem p{
-    font-family:'Cormorant Garamond', serif;
-    font-size:2rem;
-    line-height:1.8;
-    color:var(--brown);
-    font-style:italic;
+.timeline{
+    border-left:1px solid var(--borda);
+    padding-left:40px;
 }
 
-/* VERSICULO */
-
-.versiculo{
-    text-align:center;
-    padding:80px 20px;
+.timeline-item{
+    margin-bottom:60px;
+    position:relative;
 }
 
-.versiculo p{
-    font-family:'Cormorant Garamond', serif;
-    font-size:2.3rem;
-    color:var(--black);
-}
-
-.versiculo span{
-    display:block;
-    margin-top:20px;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    font-size:.75rem;
-    color:var(--gold);
-}
-
-/* PLAYER */
-
-#controle-musica{
-    position:fixed;
-    bottom:30px;
-    right:30px;
-    width:50px;
-    height:50px;
-    background:white;
+.timeline-item::before{
+    content:"";
+    width:14px;
+    height:14px;
+    background:var(--dourado);
     border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    z-index:9999;
-    border:1px solid var(--border);
-    color:var(--brown);
+    position:absolute;
+    left:-48px;
+    top:5px;
 }
 
-/* FOOTER */
+.timeline-data{
+    font-size:.8rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--marrom);
+    margin-bottom:10px;
+}
+
+.timeline-item h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2rem;
+    color:#222;
+    margin-bottom:10px;
+}
+
+.timeline-item p{
+    line-height:1.8;
+}
+
+.destaque h3{
+    color:var(--dourado);
+}
+
+/* ===== FOOTER ===== */
 
 footer{
-    margin-top:100px;
-    padding:80px 20px;
+    margin-top:120px;
+    padding:70px 20px;
     text-align:center;
+    border-top:1px solid var(--borda);
     background:white;
-    border-top:1px solid var(--border);
-}
-
-footer h3{
-    font-family:'Cormorant Garamond', serif;
-    font-size:2rem;
-    margin-bottom:15px;
-    color:var(--black);
 }
 
 footer p{
     letter-spacing:4px;
     text-transform:uppercase;
     font-size:.75rem;
-    color:#888;
 }
 
-/* RESPONSIVO */
+/* ===== RESPONSIVO ===== */
 
 @media(max-width:768px){
 
-.timeline::before{
-    left:10px;
-}
+    h1{
+        font-size:2.8rem;
+    }
 
-.timeline-item{
-    width:100%;
-    left:0!important;
-    text-align:left!important;
-    padding-left:40px;
-}
+    .galeria-container{
+        grid-template-columns:1fr;
+    }
 
-.grid-galeria{
-    grid-template-columns:1fr;
-}
+    .foto-item.grande{
+        grid-column:span 1;
+    }
 
-.foto.grande{
-    grid-column:span 1;
-}
-
-header h1{
-    font-size:3rem;
-}
-
-.titulo h2{
-    font-size:2.4rem;
-}
-
-.frase{
-    font-size:1.2rem;
-}
-
-.mensagem p{
-    font-size:1.5rem;
-}
+    .timeline{
+        padding-left:25px;
+    }
 
 }
 
@@ -588,344 +485,295 @@ header h1{
 
 <body>
 
-<audio id="musica" src="musica.mp3" loop></audio>
+<audio id="musica-casamento" autoplay loop>
+    <source src="musica.mp3" type="audio/mp3">
+</audio>
 
-<div id="controle-musica">
-    <i id="icone-musica" class="fa-solid fa-music"></i>
-</div>
+<!-- ===== TELA LACRE ===== -->
 
-<!-- ABERTURA -->
+<div id="tela-selo">
 
-<div id="tela-abertura">
+    <div class="envelope">
 
-    <div class="envelope" onclick="abrirSite()">
+        <div class="convite-topo">
 
-        <div class="envelope-base"></div>
-
-        <div class="convite">
-
-            <div class="logo-casal">
-                <span>T&R</span>
+            <div class="brasao">
+                <div class="brasao-texto">
+                    T<span>&</span>R
+                </div>
             </div>
 
-            <h1>Tiago & Ricaely</h1>
+            <div class="nomes-envelope">
+                Tiago & Ricaely
+            </div>
 
-        </div>
-
-        <div class="envelope-tampa"></div>
-
-        <div class="lacre">
-            <strong>T&R</strong>
-            <span>Abrir</span>
         </div>
 
     </div>
 
-    <div class="texto-abrir">
-        toque no lacre
+    <div class="botao-lacre" onclick="abrirConvite()">
+        <h3>T&R</h3>
+        <p>Abrir</p>
     </div>
 
 </div>
 
-<!-- SITE -->
+<!-- ===== SITE ===== -->
 
-<div id="site">
+<div id="conteudo-site">
 
 <header>
 
-    <div class="topo-logo">
-        <div class="logo-casal">
-            <span>T&R</span>
+<div class="topo-icone">
+    <i class="fa-solid fa-leaf"></i>
+</div>
+
+<div class="logo-principal">
+    <div class="brasao">
+        <div class="brasao-texto">
+            T<span>&</span>R
         </div>
     </div>
+</div>
 
-    <h1>Tiago & Ricaely</h1>
+<h1>Tiago & Ricaely</h1>
 
-    <div class="data">
-        22 . Novembro . 2026
+<div class="data">
+    22 • Novembro • 2026
+</div>
+
+<div class="frase">
+“O amor é paciente, o amor é bondoso. E a nossa maior felicidade será celebrar o início do nosso felizes para sempre ao lado das pessoas que amamos.”
+</div>
+
+<div id="contador">
+
+    <div class="box-tempo">
+        <div class="numero" id="dias">00</div>
+        <div class="rotulo">Dias</div>
     </div>
 
-    <div class="frase">
-        “O amor é paciente, o amor é bondoso.
-        A maior felicidade será celebrar o início
-        do nosso felizes para sempre ao lado das pessoas que amamos.”
+    <div class="box-tempo">
+        <div class="numero" id="horas">00</div>
+        <div class="rotulo">Horas</div>
     </div>
 
-    <div id="contador">
-
-        <div class="box-tempo">
-            <div class="numero" id="dias">00</div>
-            <div class="rotulo">Dias</div>
-        </div>
-
-        <div class="box-tempo">
-            <div class="numero" id="horas">00</div>
-            <div class="rotulo">Horas</div>
-        </div>
-
-        <div class="box-tempo">
-            <div class="numero" id="minutos">00</div>
-            <div class="rotulo">Min</div>
-        </div>
-
+    <div class="box-tempo">
+        <div class="numero" id="minutos">00</div>
+        <div class="rotulo">Minutos</div>
     </div>
+
+</div>
 
 </header>
 
-<!-- GALERIA -->
+<!-- ===== GALERIA ===== -->
 
-<section class="galeria">
+<div class="galeria-container">
 
-    <div class="titulo">
-        <span>Nossos Momentos</span>
-        <h2>Memórias que guardaremos para sempre</h2>
+    <div class="foto-item grande">
+        <img src="casal1.jpg">
     </div>
 
-    <div class="grid-galeria">
-
-        <div class="foto grande">
-            <img src="casal1.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="casal2.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="casal3.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="casal4.jpg">
-        </div>
-
-        <div class="foto grande">
-            <img src="casal5.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="casal6.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="casal7.jpg">
-        </div>
-
-        <div class="foto">
-            <img src="casal8.jpg">
-        </div>
-
+    <div class="foto-item">
+        <img src="casal2.jpg">
     </div>
 
-</section>
+    <div class="foto-item">
+        <img src="casal3.jpg">
+    </div>
 
-<!-- TIMELINE -->
+    <div class="foto-item">
+        <img src="casal4.jpg">
+    </div>
+
+    <div class="foto-item">
+        <img src="casal5.jpg">
+    </div>
+
+    <div class="foto-item grande">
+        <img src="casal6.jpg">
+    </div>
+
+    <div class="foto-item">
+        <img src="casal7.jpg">
+    </div>
+
+    <div class="foto-item">
+        <img src="casal8.jpg">
+    </div>
+
+    <div class="foto-item">
+        <img src="casal9.jpg">
+    </div>
+
+    <div class="foto-item">
+        <img src="casal10.jpg">
+    </div>
+
+    <div class="foto-item">
+        <img src="casal11.jpg">
+    </div>
+
+    <div class="foto-item">
+        <img src="casal12.jpg">
+    </div>
+
+</div>
+
+<!-- ===== CARDS ===== -->
+
+<div class="container">
+
+<div class="card">
+
+    <i class="fa-solid fa-user-check"></i>
+
+    <h2>Confirmação de Presença</h2>
+
+    <p>
+        Para nos ajudar a preparar cada detalhe com carinho, pedimos que confirme sua presença até o dia 01/10/2026.
+    </p>
+
+    <a href="https://surveymars.com/q/TrQU0MZoh" target="_blank" class="botao">
+        Confirmar Presença
+    </a>
+
+</div>
+
+<div class="card">
+
+    <i class="fa-solid fa-gift"></i>
+
+    <h2>Presentear o Casal</h2>
+
+    <p>
+        Celebrar esse momento ao lado de quem amamos já torna tudo inesquecível.
+        <br><br>
+        Mas, para familiares e amigos que desejarem nos presentear de maneira prática e carinhosa, deixamos disponível uma forma discreta de contribuição para o início da nossa nova etapa juntos.
+    </p>
+
+    <a href="#" class="botao">
+        Ver Opções
+    </a>
+
+</div>
+
+<div class="card">
+
+    <i class="fa-solid fa-location-dot"></i>
+
+    <h2>Local da Celebração</h2>
+
+    <p>
+        Nossa cerimônia acontecerá às 16h no Espaço Eunaflora, em Eunápolis - BA.
+    </p>
+
+    <a href="https://maps.google.com/?q=Espaco+Eunaflora+Eunapolis" target="_blank" class="botao">
+        Como Chegar
+    </a>
+
+</div>
+
+</div>
+
+<!-- ===== TIMELINE ===== -->
 
 <section class="timeline-section">
 
-    <div class="titulo">
-        <span>Nossa História</span>
-        <h2>Uma história escrita por Deus</h2>
-    </div>
+<h2 class="titulo-secao">
+Nossa História
+</h2>
 
-    <div class="timeline">
+<div class="timeline">
 
-        <div class="timeline-item">
-            <div class="timeline-card">
-                <i class="fa-solid fa-heart"></i>
-                <h3>18.01.2025</h3>
-                <p>Foi nesse dia que nossa história começou oficialmente.</p>
-            </div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-card">
-                <i class="fa-solid fa-ring"></i>
-                <h3>18.01.2026</h3>
-                <p>O pedido de noivado marcou o início de uma nova etapa.</p>
-            </div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-card">
-                <i class="fa-solid fa-building-columns"></i>
-                <h3>18.11.2026</h3>
-                <p>Nosso casamento civil.</p>
-            </div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-card">
-                <i class="fa-solid fa-champagne-glasses"></i>
-                <h3>22.11.2026</h3>
-                <p>O nosso grande dia diante de Deus e das pessoas que amamos.</p>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- CARDS -->
-
-<section class="cards">
-
-    <!-- RSVP -->
-
-    <div class="card">
-
-        <i class="fa-solid fa-user-check"></i>
-
-        <h3>Confirmação de Presença</h3>
-
+    <div class="timeline-item">
+        <div class="timeline-data">18/11/2024</div>
+        <h3>O Primeiro Contato</h3>
         <p>
-            Será uma alegria celebrar esse momento ao seu lado.
-            Pedimos, por gentileza, que confirme sua presença até 01/10/2026.
+            Foi quando começamos a conversar. Sem imaginar, ali começava a história mais importante das nossas vidas.
         </p>
-
-        <a href="https://surveymars.com/q/TrQU0MZoh"
-        target="_blank"
-        class="btn">
-            Confirmar Presença
-        </a>
-
     </div>
 
-    <!-- LOCAL -->
-
-    <div class="card">
-
-        <i class="fa-solid fa-map-location-dot"></i>
-
-        <h3>Local do Evento</h3>
-
+    <div class="timeline-item">
+        <div class="timeline-data">18/01/2025</div>
+        <h3>O Pedido de Namoro</h3>
         <p>
-            Nossa celebração acontecerá às 16h no Espaço Eunaflora,
-            em Eunápolis - Bahia.
+            Entre sentimentos sinceros e muitos sonhos, decidimos começar oficialmente nossa caminhada juntos.
         </p>
-
-        <a href="https://maps.google.com/?q=Espaco+Eunaflora+Eunapolis"
-        target="_blank"
-        class="btn">
-            Como Chegar
-        </a>
-
     </div>
 
-    <!-- PIX -->
-
-    <div class="card">
-
-        <i class="fa-brands fa-pix"></i>
-
-        <h3>Com carinho...</h3>
-
+    <div class="timeline-item">
+        <div class="timeline-data">18/01/2026</div>
+        <h3>O Noivado</h3>
         <p>
-            A presença de cada um já é nosso maior presente.
-            Mas, para amigos e familiares que desejarem nos abençoar,
-            disponibilizamos uma contribuição via Pix.
+            Com amor, certeza e fé em Deus, demos mais um passo rumo ao nosso futuro.
         </p>
-
-        <a href="#"
-        class="btn">
-            Presentear
-        </a>
-
     </div>
 
-</section>
+    <div class="timeline-item">
+        <div class="timeline-data">18/11/2026</div>
+        <h3>Casamento Civil</h3>
+        <p>
+            O início oficial da nossa união perante a lei e diante das pessoas que amamos.
+        </p>
+    </div>
 
-<!-- MENSAGEM -->
+    <div class="timeline-item destaque">
+        <div class="timeline-data">22/11/2026</div>
+        <h3>Nosso Grande Dia</h3>
+        <p>
+            O dia em que celebraremos nosso amor diante de Deus, da família e dos amigos.
+        </p>
+    </div>
 
-<section class="mensagem">
-
-    <p>
-        Cada pessoa presente em nossa história possui um significado especial.
-        Ter você conosco neste momento tornará nosso dia ainda mais inesquecível.
-    </p>
-
-</section>
-
-<!-- VERSICULO -->
-
-<section class="versiculo">
-
-    <p>
-        “Assim, eles já não são dois, mas sim uma só carne.”
-    </p>
-
-    <span>
-        Mateus 19:6
-    </span>
+</div>
 
 </section>
 
 <footer>
-
-    <h3>Tiago & Ricaely</h3>
-
     <p>
-        22 . Novembro . 2026 • Eunápolis - Bahia
+        Tiago & Ricaely • 22.11.2026 • Eunápolis - BA
     </p>
-
 </footer>
 
 </div>
 
 <script>
 
-const musica = document.getElementById("musica");
-const icone = document.getElementById("icone-musica");
+function abrirConvite(){
 
-function abrirSite(){
+    document.getElementById("tela-selo").style.opacity = "0";
 
-    document.getElementById("tela-abertura").classList.add("abrir");
+    setTimeout(() => {
 
-    setTimeout(()=>{
+        document.getElementById("tela-selo").style.display = "none";
+        document.getElementById("conteudo-site").classList.add("visivel");
 
-        document.getElementById("tela-abertura").classList.add("sumir");
-
-        document.getElementById("site").classList.add("visivel");
-
-    },1200);
-
-    musica.volume = 0.3;
-
-    musica.play();
+    },800);
 
 }
-
-document.getElementById("controle-musica").addEventListener("click",()=>{
-
-    if(musica.paused){
-
-        musica.play();
-        icone.className = "fa-solid fa-pause";
-
-    }else{
-
-        musica.pause();
-        icone.className = "fa-solid fa-music";
-
-    }
-
-});
-
-/* CONTADOR */
 
 const dataCasamento = new Date("Nov 22, 2026 16:00:00").getTime();
 
 function atualizarContador(){
 
     const agora = new Date().getTime();
-
     const distancia = dataCasamento - agora;
 
-    const dias = Math.floor(distancia / (1000*60*60*24));
+    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
 
-    const horas = Math.floor((distancia % (1000*60*60*24)) / (1000*60*60));
+    const horas = Math.floor(
+        (distancia % (1000 * 60 * 60 * 24))
+        /
+        (1000 * 60 * 60)
+    );
 
-    const minutos = Math.floor((distancia % (1000*60*60)) / (1000*60));
+    const minutos = Math.floor(
+        (distancia % (1000 * 60 * 60))
+        /
+        (1000 * 60)
+    );
 
     document.getElementById("dias").innerHTML = dias;
     document.getElementById("horas").innerHTML = horas;
