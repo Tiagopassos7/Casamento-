@@ -363,9 +363,11 @@ transition:.4s;
 
 nav.scrolled{
 
-background:rgba(255,255,255,.94);
+nav{
 
-backdrop-filter:blur(10px);
+background:rgba(0,0,0,.08);
+
+backdrop-filter:blur(8px);
 
 box-shadow:0 5px 20px rgba(0,0,0,.05);
 
@@ -433,8 +435,8 @@ background:
 
 linear-gradient(
 90deg,
-rgba(0,0,0,.45),
-rgba(0,0,0,.15)
+rgba(0,0,0,.60),
+rgba(0,0,0,.35)
 ),
 
 url("img/hero.jpg");
@@ -509,7 +511,7 @@ border-radius:50%;
 
 font-family:'Cormorant Garamond',serif;
 
-font-size:5.5rem;
+font-size:6.3rem;
 
 font-weight:300;
 
@@ -565,9 +567,9 @@ flex-wrap:wrap;
 
 width:120px;
 
-background:rgba(255,255,255,.12);
+background:rgba(255,255,255,.10);
 
-backdrop-filter:blur(10px);
+backdrop-filter:blur(18px);;
 
 border:1px solid rgba(255,255,255,.25);
 
@@ -901,7 +903,8 @@ box-shadow:var(--shadow);
 
 transform:scale(1.03);
 
-filter:brightness(1.05);
+box-shadow:
+0 20px 45px rgba(0,0,0,.18);
 
 }
 
@@ -1075,6 +1078,33 @@ transform:scale(1.1);
    .whatsapp:active{
 
     transform:scale(.95);
+      @keyframes pulse{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+.whatsapp{
+
+animation:pulse 2s infinite;
+
+}
 
 }
 
@@ -1121,6 +1151,25 @@ transform:rotate(15deg);
 #musicButton:active{
 
     transform:scale(.95);
+   #musicButton.playing{
+
+animation:spin 8s linear infinite;
+
+}
+
+@keyframes spin{
+
+from{
+
+transform:rotate(0);
+
+}
+
+to{
+
+transform:rotate(360deg);
+
+}
    
 }
 
