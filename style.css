@@ -362,12 +362,9 @@ transition:.4s;
 }
 
 nav.scrolled{
-
-nav.scrolled{
     background:rgba(255,255,255,.94);
     backdrop-filter:blur(8px);
     box-shadow:0 5px 20px rgba(0,0,0,.05);
-
 }
 
 .logo{
@@ -1095,9 +1092,6 @@ transform:scale(1);
 
 .whatsapp{
 animation:pulse 2s infinite;
-
-}
-
 }
 
 /* ===================================================
@@ -1137,13 +1131,27 @@ transition:.35s;
 }
 
 #musicButton:hover{
+    transform:rotate(15deg);
+}
 
-transform:rotate(15deg);
-   
 #musicButton:active{
-
     transform:scale(.95);
-   #musicButton.playing{
+}
+
+#musicButton.playing{
+    animation:spin 8s linear infinite;
+}
+
+@keyframes spin{
+
+from{
+    transform:rotate(0deg);
+}
+
+to{
+    transform:rotate(360deg);
+}
+}
 
 animation:spin 8s linear infinite;
 
