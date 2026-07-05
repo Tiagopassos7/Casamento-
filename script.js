@@ -51,6 +51,7 @@ musicButton.addEventListener("click", () => {
     }
 
     tocando = !tocando;
+    musicButton.classList.toggle("playing");
 
 });
 
