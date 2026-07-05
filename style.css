@@ -1070,11 +1070,13 @@ transition:.3s;
 }
 
 .whatsapp:hover{
+    transform:scale(1.1);
+}
 
-transform:scale(1.1);
-   .whatsapp:active{
-
+.whatsapp:active{
     transform:scale(.95);
+}
+
       @keyframes pulse{
 
 0%{
