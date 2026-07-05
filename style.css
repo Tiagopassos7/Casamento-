@@ -363,13 +363,10 @@ transition:.4s;
 
 nav.scrolled{
 
-nav{
-
-background:rgba(0,0,0,.08);
-
-backdrop-filter:blur(8px);
-
-box-shadow:0 5px 20px rgba(0,0,0,.05);
+nav.scrolled{
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(8px);
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
 
 }
 
