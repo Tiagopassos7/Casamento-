@@ -875,12 +875,8 @@ gap:18px;
 }
 
 .grid-galeria img{
-
-width:100%;
-
-aspect-ratio:4/5;
-height:auto;;
-
+    height:auto;
+}
 object-fit:cover;
 
 cursor:pointer;
